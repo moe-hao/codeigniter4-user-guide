@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>本地化 &mdash; CodeIgniter 4.6.3 中文手册|用户手册|用户指南|中文文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/citheme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/citheme_dark.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script src="../_static/js/citheme.js"></script>
+        <script src="../_static/js/carbon.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="在视图文件中使用 PHP 替代语法" href="alternative_php.html" />
+    <link rel="prev" title="内容安全策略" href="csp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/ci-logo-text.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">欢迎使用 CodeIgniter4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/index.html">欢迎使用 CodeIgniter4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/requirements.html">服务器要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/credits.html">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/psr.html">PSR 兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">许可协议</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/installing_composer.html">Composer 安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/installing_manual.html">手动安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/running.html">运行你的应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">故障排除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/deployment.html">部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelogs/index.html">变更记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">从前一版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/repositories.html">CodeIgniter 仓库</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">构建你的第一个应用程序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">静态页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">新闻部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">创建新闻</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">结束语</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">CodeIgniter4 概览</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/structure.html">应用程序结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/mvc.html">模型、视图和控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/autoloader.html">自动加载文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/services.html">服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/factories.html">工厂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/http.html">处理 HTTP 请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/security.html">安全指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/goals.html">设计与架构目标</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">常规主题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/configuration.html">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">CodeIgniter URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">全局函数和常量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/logging.html">记录信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">错误处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">网页缓存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ajax.html">AJAX 请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/modules.html">代码模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">管理应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">处理多个环境</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../incoming/index.html">控制器和路由</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/routing.html">URI 路由</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/controllers.html">控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/filters.html">控制器过滤器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/auto_routing_improved.html">自动路由（改进版）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/message.html">HTTP 消息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/request.html">请求类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/incomingrequest.html">IncomingRequest 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/content_negotiation.html">内容协商</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/methodspoofing.html">HTTP 方法欺骗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/restful.html">RESTful 资源处理</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">构建响应</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="views.html">视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view_renderer.html">视图渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view_layouts.html">视图布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view_cells.html">视图单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view_parser.html">视图解析器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view_decorators.html">视图装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="table.html">HTML 表格类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html">HTTP 响应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_responses.html">API 响应特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="csp.html">内容安全策略</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">本地化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alternative_php.html">在视图文件中使用 PHP 替代语法</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">使用数据库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">快速入门:使用示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">数据库配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">连接数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">运行查询</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">生成查询结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">查询辅助方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">查询构建器类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">事务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">获取元数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">自定义函数调用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/events.html">数据库事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">数据库实用工具</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">数据建模</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/model.html">使用 CodeIgniter 的模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/entities.html">使用实体类</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dbmgmt/index.html">管理数据库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/forge.html">数据库 Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/migration.html">数据库迁移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/seeds.html">数据库填充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/db_commands.html">数据库命令</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">类库参考</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">缓存驱动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cookies.html">Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cors.html">跨域资源共享 (CORS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/curlrequest.html">CURLRequest 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Email 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">加密服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/files.html">文件处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_collections.html">文件集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/honeypot.html">蜜罐类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/images.html">图像处理类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">分页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/publisher.html">Publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Session 库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/throttler.html">限速器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/time.html">时间与日期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">排版</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uploaded_files.html">处理上传的文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">使用 URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">User Agent 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/validation.html">数据验证</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">辅助函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">数组辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Cookie 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">日期辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/filesystem_helper.html">文件系统辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">表单辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">HTML 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Inflector 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">数字辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">安全辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/test_helper.html">测试辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">文本辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">URL 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">XML 辅助函数</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html">入门指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/database.html">数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/fabricator.html">生成数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/controllers.html">测试控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/feature.html">HTTP 测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/response.html">测试响应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/cli.html">测试 CLI 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/mocking.html">模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/benchmark.html">基准测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/debugging.html">调试应用程序</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">命令行使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_overview.html">CLI 概览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_controllers.html">通过 CLI 运行控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/spark_commands.html">Spark 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_commands.html">创建 Spark 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_generators.html">CLI 生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_library.html">CLI 库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_request.html">CLIRequest 类</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">扩展 CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extending/core_classes.html">创建核心系统类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/common.html">替换通用函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/events.html">事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/basecontroller.html">扩展控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/authentication.html">身份验证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/composer_packages.html">创建 Composer 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/contributing.html">为 CodeIgniter 做贡献</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/official_packages.html">官方包</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">构建响应</a></li>
+      <li class="breadcrumb-item active">本地化</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>本地化<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id3" id="id24">处理区域设置</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id4" id="id25">配置区域设置</a></p>
+<ul>
+<li><p><a class="reference internal" href="#setting-the-default-locale" id="id26">设置默认区域设置</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id6" id="id27">区域检测</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id28">内容协商</a></p></li>
+<li><p><a class="reference internal" href="#localization-in-routes" id="id29">在路由中</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id9" id="id30">设置当前区域设置</a></p>
+<ul>
+<li><p><a class="reference internal" href="#incomingrequest" id="id31">IncomingRequest 区域设置</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id32">语言区域设置</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id11" id="id33">获取当前区域设置</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#language-localization" id="id34">语言本地化</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id13" id="id35">创建语言文件</a></p></li>
+<li><p><a class="reference internal" href="#id14" id="id36">基本用法</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id15" id="id37">替换参数</a></p></li>
+<li><p><a class="reference internal" href="#id16" id="id38">指定区域设置</a></p></li>
+<li><p><a class="reference internal" href="#id17" id="id39">嵌套数组</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id18" id="id40">语言回退</a></p></li>
+<li><p><a class="reference internal" href="#id19" id="id41">系统消息翻译</a></p></li>
+<li><p><a class="reference internal" href="#id21" id="id42">覆盖系统消息翻译</a></p></li>
+<li><p><a class="reference internal" href="#generating-translation-files-via-command" id="id43">通过命令生成翻译文件</a></p>
+<ul>
+<li><p><a class="reference internal" href="#sync-translations-command" id="id44">通过命令同步翻译文件</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="id3">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">处理区域设置</a><a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<p>CodeIgniter 提供了多种工具来帮助你对应用程序进行不同语言的本地化。虽然完整的应用程序本地化是一个复杂的主题，但替换应用程序中不同支持语言的字符串非常简单。</p>
+<section id="id4">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">配置区域设置</a><a class="headerlink" href="#id4" title="此标题的永久链接"></a></h3>
+<section id="setting-the-default-locale">
+<span id="id5"></span><h4><a class="toc-backref" href="#id26" role="doc-backlink">设置默认区域设置</a><a class="headerlink" href="#setting-the-default-locale" title="此标题的永久链接"></a></h4>
+<p>每个站点都有一个默认的操作语言/区域设置。这可以在 <strong>app/Config/App.php</strong> 中设置：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">App</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$defaultLocale</span> <span class="o">=</span> <span class="s1">&#39;en&#39;</span><span class="p">;</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>该值可以是应用程序用于管理文本字符串和其他格式的任何字符串。建议使用 <a class="reference external" href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a> 语言代码。这会生成像 en-US（美式英语）或 fr-FR（法语/法国）这样的语言代码。在 <a class="reference external" href="https://www.w3.org/International/articles/language-tags/">W3C 的网站</a> 上可以找到更易读的介绍。</p>
+<p>如果找不到完全匹配项，系统会智能回退到更通用的语言代码。如果区域设置代码设置为 <code class="docutils literal notranslate"><span class="pre">en-US</span></code>，而我们只设置了 <code class="docutils literal notranslate"><span class="pre">en</span></code> 的语言文件，则将使用这些文件，因为更具体的 <code class="docutils literal notranslate"><span class="pre">en-US</span></code> 不存在。但是，如果 <strong>app/Language/en-US</strong> 目录中存在语言目录，则将优先使用该目录。</p>
+</section>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">区域检测</a><a class="headerlink" href="#id6" title="此标题的永久链接"></a></h3>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>区域检测仅适用于使用 IncomingRequest 类的基于 Web 的请求。命令行请求将不具备这些功能。</p>
+</div>
+<p>有两种支持的方法可以在请求期间检测正确的区域设置。</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#id7">内容协商</a>：第一种是 “设置即忘记” 方法，将自动执行 <a class="reference internal" href="../incoming/content_negotiation.html"><span class="doc">内容协商</span></a> 以确定要使用的正确区域设置。</p></li>
+<li><p><a class="reference internal" href="#id8">在路由中</a>：第二种方法允许你在路由中指定一个段来设置区域设置。</p></li>
+</ol>
+<p>如果需要直接设置区域设置，请参阅 <a class="reference internal" href="#id9">设置当前区域设置</a>。</p>
+<p>自 v4.4.0 起，添加了 <code class="docutils literal notranslate"><span class="pre">IncomingRequest::setValidLocales()</span></code> 来设置（和重置）从 <code class="docutils literal notranslate"><span class="pre">Config\App::$supportedLocales</span></code> 设置的有效区域。</p>
+<section id="id7">
+<h4><a class="toc-backref" href="#id28" role="doc-backlink">内容协商</a><a class="headerlink" href="#id7" title="此标题的永久链接"></a></h4>
+<p>你可以通过 <strong>app/Config/App.php</strong> 中的两个附加设置来配置自动内容协商。第一个值告诉 Request 类我们确实希望协商区域设置，因此只需将其设置为 true：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">App</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="nx">bool</span> <span class="nv">$negotiateLocale</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>启用此功能后，系统将根据你在 <code class="docutils literal notranslate"><span class="pre">$supportLocales</span></code> 中定义的区域设置数组自动协商正确的语言。如果在你支持的语言与请求的语言之间找不到匹配项，则将使用 <code class="docutils literal notranslate"><span class="pre">$supportedLocales</span></code> 中的第一个项。在以下示例中，如果找不到匹配项，将使用 <code class="docutils literal notranslate"><span class="pre">en</span></code> 区域设置：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">App</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$supportedLocales</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="s1">&#39;fr-FR&#39;</span><span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="localization-in-routes">
+<span id="id8"></span><h4><a class="toc-backref" href="#id29" role="doc-backlink">在路由中</a><a class="headerlink" href="#localization-in-routes" title="此标题的永久链接"></a></h4>
+<p>第二种方法使用自定义占位符来检测所需区域设置并在请求中设置。占位符 <code class="docutils literal notranslate"><span class="pre">{locale}</span></code> 可以作为段放置在路由中。如果存在，匹配段的内容将是你的区域设置：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;{locale}/books&#39;</span><span class="p">,</span> <span class="s1">&#39;App\Books::index&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>在此示例中，如果用户尝试访问 <strong>http://example.com/fr/books</strong>，则区域设置将设置为 <code class="docutils literal notranslate"><span class="pre">fr</span></code>，前提是它被配置为有效区域设置。</p>
+<p>如果该值与 <strong>app/Config/App.php</strong> 中 <code class="docutils literal notranslate"><span class="pre">$supportedLocales</span></code> 定义的有效区域设置不匹配，则将使用默认区域设置，除非你设置为仅使用 App 配置文件中定义的受支持区域设置：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">useSupportedLocalesOnly</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>自 v4.3.0 起可以使用 <code class="docutils literal notranslate"><span class="pre">useSupportedLocalesOnly()</span></code> 方法。</p>
+</div>
+</section>
+</section>
+<section id="id9">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">设置当前区域设置</a><a class="headerlink" href="#id9" title="此标题的永久链接"></a></h3>
+<section id="incomingrequest">
+<h4><a class="toc-backref" href="#id31" role="doc-backlink">IncomingRequest 区域设置</a><a class="headerlink" href="#incomingrequest" title="此标题的永久链接"></a></h4>
+<p>如果要直接设置区域设置，可以使用 <a class="reference internal" href="../incoming/incomingrequest.html"><span class="doc">IncomingRequest 类</span></a> 中的 <code class="docutils literal notranslate"><span class="pre">setLocale()</span></code> 方法：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="sd">/** @var \CodeIgniter\HTTP\IncomingRequest $request */</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setLocale</span><span class="p">(</span><span class="s1">&#39;ja&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>在设置区域设置之前，必须设置有效区域。因为任何尝试设置无效区域设置的操作都将导致设置 <a class="reference internal" href="#setting-the-default-locale"><span class="std std-ref">默认区域设置</span></a>。</p>
+<p>默认情况下，有效区域在 <strong>app/Config/App.php</strong> 的 <code class="docutils literal notranslate"><span class="pre">Config\App::$supportedLocales</span></code> 中定义：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">App</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$supportedLocales</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="s1">&#39;fr-FR&#39;</span><span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>自 v4.4.0 起，添加了 <code class="docutils literal notranslate"><span class="pre">IncomingRequest::setValidLocales()</span></code> 来设置（和重置）有效区域。如果要动态更改有效区域，请使用此方法。</p>
+</div>
+</section>
+<section id="id10">
+<h4><a class="toc-backref" href="#id32" role="doc-backlink">语言区域设置</a><a class="headerlink" href="#id10" title="此标题的永久链接"></a></h4>
+<p><a class="reference internal" href="../general/common_functions.html#lang" title="lang"><code class="xref php php-func docutils literal notranslate"><span class="pre">lang()</span></code></a> 函数中使用的 <code class="docutils literal notranslate"><span class="pre">Language</span></code> 类也具有当前区域设置。该设置在实例化期间设置为 <code class="docutils literal notranslate"><span class="pre">IncomingRequest</span></code> 区域设置。</p>
+<p>如果要在实例化语言类后更改区域设置，请使用 <code class="docutils literal notranslate"><span class="pre">Language::setLocale()</span></code> 方法。</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="sd">/** @var \CodeIgniter\Language\Language $lang */</span>
+<span class="nv">$lang</span> <span class="o">=</span> <span class="nx">service</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">);</span>
+<span class="nv">$lang</span><span class="o">-&gt;</span><span class="na">setLocale</span><span class="p">(</span><span class="s1">&#39;ja&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">获取当前区域设置</a><a class="headerlink" href="#id11" title="此标题的永久链接"></a></h3>
+<p>始终可以通过 <code class="docutils literal notranslate"><span class="pre">getLocale()</span></code> 方法从 IncomingRequest 对象获取当前区域设置。如果你的控制器继承自 <code class="docutils literal notranslate"><span class="pre">CodeIgniter\Controller</span></code>，则可以通过 <code class="docutils literal notranslate"><span class="pre">$this-&gt;request</span></code> 获取：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Controllers</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserController</span> <span class="k">extends</span> <span class="nx">BaseController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$locale</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getLocale</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>或者，你可以使用 <a class="reference internal" href="../concepts/services.html"><span class="doc">Services 类</span></a> 来获取当前请求：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="nv">$locale</span> <span class="o">=</span> <span class="nx">service</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getLocale</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="language-localization">
+<span id="id12"></span><h2><a class="toc-backref" href="#id34" role="doc-backlink">语言本地化</a><a class="headerlink" href="#language-localization" title="此标题的永久链接"></a></h2>
+<section id="id13">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">创建语言文件</a><a class="headerlink" href="#id13" title="此标题的永久链接"></a></h3>
+<p>语言字符串存储在 <strong>app/Language</strong> 目录中，每个支持的语言（区域设置）都有一个子目录:</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="nx">app</span><span class="o">/</span>
+    <span class="nx">Language</span><span class="o">/</span>
+        <span class="nx">en</span><span class="o">/</span>
+            <span class="nx">App</span><span class="o">.</span><span class="nx">php</span>
+        <span class="nx">fr</span><span class="o">/</span>
+            <span class="nx">App</span><span class="o">.</span><span class="nx">php</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>语言文件没有命名空间。</p>
+</div>
+<p>语言没有必须遵循的特定命名约定。文件应逻辑命名以描述其包含的内容类型。例如，假设你要创建一个包含错误消息的文件。你可以简单地将其命名为：<strong>Errors.php</strong>。</p>
+<p>在文件中，你将返回一个数组，其中数组中的每个元素都有一个语言键，并可以返回字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;languageKey&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The actual message to be shown.&#39;</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>不能在语言键的开头和结尾使用点（<code class="docutils literal notranslate"><span class="pre">.</span></code>）。</p>
+</div>
+<p>它还支持嵌套定义：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;languageKey&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;nested&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The actual message to be shown.&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;errorEmailMissing&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;You must submit an email address&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;errorURLMissing&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;You must submit a URL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;errorUsernameMissing&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;You must submit a username&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nested&#39;</span>               <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;error&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;A specific error message&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h3><a class="toc-backref" href="#id36" role="doc-backlink">基本用法</a><a class="headerlink" href="#id14" title="此标题的永久链接"></a></h3>
+<p>你可以使用 <a class="reference internal" href="../general/common_functions.html#lang" title="lang"><code class="xref php php-func docutils literal notranslate"><span class="pre">lang()</span></code></a> 辅助函数通过传递文件名和语言键作为第一个参数（用句点 <code class="docutils literal notranslate"><span class="pre">.</span></code> 分隔）从任何语言文件中检索文本。</p>
+<p>例如，要从 <strong>Errors.php</strong> 语言文件加载 <code class="docutils literal notranslate"><span class="pre">errorEmailMissing</span></code> 字符串，可以执行以下操作：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Errors.errorEmailMissing&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>对于嵌套定义，可以执行以下操作：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Errors.nested.error.message&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>如果请求的语言键在当前区域设置的文件中不存在（在 <a class="reference internal" href="#id18">语言回退</a> 之后），将原样返回字符串。在此示例中，如果不存在，它将返回 <code class="docutils literal notranslate"><span class="pre">Errors.errorEmailMissing</span></code> 或 <code class="docutils literal notranslate"><span class="pre">Errors.nested.error.message</span></code>。</p>
+<section id="id15">
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">替换参数</a><a class="headerlink" href="#id15" title="此标题的永久链接"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>以下函数都需要在系统上加载 <a class="reference external" href="https://www.php.net/manual/zh/book.intl.php">intl</a> 扩展才能工作。如果未加载扩展，将不会尝试替换。在 <a class="reference external" href="https://www.sitepoint.com/localization-demystified-understanding-php-intl/">Sitepoint</a> 上可以找到一个很好的概述。</p>
+</div>
+<p>你可以将值的数组作为第二个参数传递给 <code class="docutils literal notranslate"><span class="pre">lang()</span></code> 函数，以替换语言字符串中的占位符。这允许进行非常简单的数字翻译和格式化：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// The language file, Tests.php:</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;apples&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;I have {0, number} apples.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;men&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;The top {1, number} men out-performed the remaining {0, number}&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;namedApples&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;I have {number_apples, number, integer} apples.&#39;</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="c1">// Displays &quot;I have 3 apples.&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.apples&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>占位符中的第一个项对应于数组中的项索引（如果是数字）：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="c1">// Displays &quot;The top 23 men out-performed the remaining 20&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.men&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">23</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>你也可以使用命名键以便更清晰：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="c1">// Displays &quot;I have 3 apples.&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.namedApples&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;number_apples&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>显然，你可以做的不仅仅是数字替换。根据底层库的 <a class="reference external" href="https://unicode-org.github.io/icu-docs/apidoc/released/icu4c/classMessageFormat.html#details">官方 ICU 文档</a>，可以替换以下类型的数据：</p>
+<ul class="simple">
+<li><p>数字 - 整数、货币、百分比</p></li>
+<li><p>日期 - 短、中、长、完整</p></li>
+<li><p>时间 - 短、中、长、完整</p></li>
+<li><p>拼写 - 拼出数字（例如，34 变为三十四）</p></li>
+<li><p>序数</p></li>
+<li><p>持续时间</p></li>
+</ul>
+<p>以下是一些示例：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// The language file, Tests.php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;shortTime&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;The time is now {0, time, short}.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumTime&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The time is now {0, time, medium}.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;longTime&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;The time is now {0, time, long}.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fullTime&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;The time is now {0, time, full}.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shortDate&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;The date is now {0, date, short}.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mediumDate&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The date is now {0, date, medium}.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;longDate&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;The date is now {0, date, long}.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fullDate&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;The date is now {0, date, full}.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spelledOut&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;34 is {0, spellout}&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ordinal&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;The ordinal is {0, ordinal}&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;duration&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;It has been {0, duration}&#39;</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="c1">// Displays &quot;The time is now 11:18 PM&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.shortTime&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+<span class="c1">// Displays &quot;The time is now 11:18:50 PM&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.mediumTime&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+<span class="c1">// Displays &quot;The time is now 11:19:09 PM CDT&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.longTime&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+<span class="c1">// Displays &quot;The time is now 11:19:26 PM Central Daylight Time&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.fullTime&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+
+<span class="c1">// Displays &quot;The date is now 8/14/16&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.shortDate&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+<span class="c1">// Displays &quot;The date is now Aug 14, 2016&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.mediumDate&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+<span class="c1">// Displays &quot;The date is now August 14, 2016&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.longDate&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+<span class="c1">// Displays &quot;The date is now Sunday, August 14, 2016&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.fullDate&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+
+<span class="c1">// Displays &quot;34 is thirty-four&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.spelledOut&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">34</span><span class="p">]);</span>
+
+<span class="c1">// Displays &quot;It has been 408,676:24:35&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Tests.ordinal&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()]);</span>
+</pre></div>
+</div>
+<p>你应该阅读 MessageFormatter 类和底层 ICU 格式化的文档，以更好地了解其功能，例如执行条件替换、复数化等。前面提供的两个链接将让你很好地了解可用选项。</p>
+</section>
+<section id="id16">
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">指定区域设置</a><a class="headerlink" href="#id16" title="此标题的永久链接"></a></h4>
+<p>要指定用于替换参数的不同区域设置，可以将区域设置作为第三个参数传递给 <a class="reference internal" href="../general/common_functions.html#lang" title="lang"><code class="xref php php-func docutils literal notranslate"><span class="pre">lang()</span></code></a> 函数。</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// Displays &quot;The time is now 23:21:28 GMT-5&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Test.longTime&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">time</span><span class="p">()],</span> <span class="s1">&#39;ru-RU&#39;</span><span class="p">);</span>
+
+<span class="c1">// Displays &quot;£7.41&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;{price, number, currency}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;price&#39;</span> <span class="o">=&gt;</span> <span class="mf">7.41</span><span class="p">],</span> <span class="s1">&#39;en-GB&#39;</span><span class="p">);</span>
+<span class="c1">// Displays &quot;$7.41&quot;</span>
+<span class="k">echo</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;{price, number, currency}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;price&#39;</span> <span class="o">=&gt;</span> <span class="mf">7.41</span><span class="p">],</span> <span class="s1">&#39;en-US&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>如果要更改当前区域设置，请参阅 <a class="reference internal" href="#id10">语言区域设置</a>。</p>
+</section>
+<section id="id17">
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">嵌套数组</a><a class="headerlink" href="#id17" title="此标题的永久链接"></a></h4>
+<p>语言文件还允许使用嵌套数组以便更轻松地处理列表等。</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// Language/en/Fruit.php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;list&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;Apples&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Bananas&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Grapes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Lemons&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Oranges&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Strawberries&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+
+<span class="c1">// Displays &quot;Apples, Bananas, Grapes, Lemons, Oranges, Strawberries&quot;</span>
+<span class="k">echo</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Fruit.list&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id18">
+<h3><a class="toc-backref" href="#id40" role="doc-backlink">语言回退</a><a class="headerlink" href="#id18" title="此标题的永久链接"></a></h3>
+<p>如果你为某个区域设置（例如 <strong>Language/en/App.php</strong>）提供了一组消息，则可以为该区域设置添加语言变体，每个变体位于自己的文件夹中，例如 <strong>Language/en-US/App.php</strong>。</p>
+<p>你只需为该区域变体本地化不同的消息提供值。任何缺失的消息定义将自动从主区域设置中提取。</p>
+<p>更好的是，本地化可以一直回退到英语（<strong>en</strong>），以防框架添加了新消息而你尚未有机会为你的区域设置翻译它们。</p>
+<p>因此，如果你使用区域设置 <code class="docutils literal notranslate"><span class="pre">fr-CA</span></code>，则将首先在 <strong>Language/fr-CA</strong> 目录中查找本地化消息，然后在 <strong>Language/fr</strong> 目录中查找，最后在 <strong>Language/en</strong> 目录中查找。</p>
+</section>
+<section id="id19">
+<h3><a class="toc-backref" href="#id41" role="doc-backlink">系统消息翻译</a><a class="headerlink" href="#id19" title="此标题的永久链接"></a></h3>
+<p>我们在 <a class="reference external" href="https://github.com/codeigniter4/translations">自己的仓库</a> 中提供了一套 “官方” 系统消息翻译。</p>
+<p>你可以下载该仓库，并将其 <strong>Language</strong> 文件夹复制到你的 <strong>app</strong> 文件夹中。由于 <code class="docutils literal notranslate"><span class="pre">App</span></code> 命名空间映射到你的 <strong>app</strong> 文件夹，因此合并的翻译将自动被识别。</p>
+<p>或者，更好的做法是在项目中运行以下命令：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">composer require codeigniter4/translations</span>
+</pre></div>
+</div>
+<p>由于翻译文件夹被正确映射，翻译后的消息将自动被识别。</p>
+</section>
+<section id="id21">
+<h3><a class="toc-backref" href="#id42" role="doc-backlink">覆盖系统消息翻译</a><a class="headerlink" href="#id21" title="此标题的永久链接"></a></h3>
+<p>框架提供 <a class="reference internal" href="#id19">系统消息翻译</a>，你安装的包也可能提供消息翻译。</p>
+<p>如果要覆盖某些语言消息，请在 <strong>app/Language</strong> 目录中创建语言文件。然后，在文件中仅返回要覆盖的数组。</p>
+</section>
+<section id="generating-translation-files-via-command">
+<span id="id22"></span><h3><a class="toc-backref" href="#id43" role="doc-backlink">通过命令生成翻译文件</a><a class="headerlink" href="#generating-translation-files-via-command" title="此标题的永久链接"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">在 4.5.0 版本加入.</span></p>
+</div>
+<p>你可以自动生成和更新 <strong>app</strong> 文件夹中的翻译文件。该命令将搜索 <code class="docutils literal notranslate"><span class="pre">lang()</span></code> 函数的使用，通过定义 <code class="docutils literal notranslate"><span class="pre">Config\App</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">defaultLocale</span></code> 区域设置来合并 <strong>app/Language</strong> 中的当前翻译键。操作完成后，你需要自行翻译语言键。该命令通常能够识别嵌套键 <code class="docutils literal notranslate"><span class="pre">File.array.nested.text</span></code>。先前保存的键不会更改。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">php spark lang:find</span>
+</pre></div>
+</div>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// Controllers/Translation/Lang.php</span>
+<span class="nv">$message</span>  <span class="o">=</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Text.info.success&#39;</span><span class="p">);</span>
+<span class="nv">$message2</span> <span class="o">=</span> <span class="nx">lang</span><span class="p">(</span><span class="s1">&#39;Text.paragraph&#39;</span><span class="p">);</span>
+
+<span class="c1">// The following will be saved in Language/en/Text.php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;info&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;success&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Text.info.success&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;paragraph&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Text.paragraph&#39;</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>扫描文件夹时，将跳过 <strong>app/Language</strong>。</p>
+</div>
+<p>生成的翻译文件很可能不符合你的编码标准。建议进行格式化。例如，如果安装了 <code class="docutils literal notranslate"><span class="pre">php-cs-fixer</span></code>，则运行 <code class="docutils literal notranslate"><span class="pre">vendor/bin/php-cs-fixer</span> <span class="pre">fix</span> <span class="pre">./app/Language</span></code>。</p>
+<p>在更新之前，可以预览命令找到的翻译：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">php spark lang:find --verbose --show-new</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--verbose</span></code> 的详细输出还会显示无效键的列表。例如：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">...</span>
+
+<span class="go">Files found: 10</span>
+<span class="go">New translates found: 30</span>
+<span class="go">Bad translates found: 5</span>
+<span class="go">+------------------------+---------------------------------+</span>
+<span class="go">| Bad Key                | Filepath                        |</span>
+<span class="go">+------------------------+---------------------------------+</span>
+<span class="go">| ..invalid_nested_key.. | app/Controllers/Translation.php |</span>
+<span class="go">| .invalid_key           | app/Controllers/Translation.php |</span>
+<span class="go">| TranslationBad         | app/Controllers/Translation.php |</span>
+<span class="go">| TranslationBad.        | app/Controllers/Translation.php |</span>
+<span class="go">| TranslationBad...      | app/Controllers/Translation.php |</span>
+<span class="go">+------------------------+---------------------------------+</span>
+
+<span class="go">All operations done!</span>
+</pre></div>
+</div>
+<p>为了更精确地搜索，请指定要扫描的区域设置或目录。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">php spark lang:find --dir Controllers/Translation --locale en --show-new</span>
+</pre></div>
+</div>
+<p>可以通过运行命令获取详细信息：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">php spark lang:find --help</span>
+</pre></div>
+</div>
+<section id="sync-translations-command">
+<span id="id23"></span><h4><a class="toc-backref" href="#id44" role="doc-backlink">通过命令同步翻译文件</a><a class="headerlink" href="#sync-translations-command" title="此标题的永久链接"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">在 4.6.0 版本加入.</span></p>
+</div>
+<p>当你完成当前语言的翻译后，可能需要为另一种语言创建文件。你可以使用 spark <code class="docutils literal notranslate"><span class="pre">lang:find</span></code> 命令来帮助完成此操作。但是，它可能无法检测到所有翻译，特别是那些具有动态设置参数的翻译，例如 <code class="docutils literal notranslate"><span class="pre">lang('App.status.'</span> <span class="pre">.</span> <span class="pre">$key,</span> <span class="pre">['payload'</span> <span class="pre">=&gt;</span> <span class="pre">'John'],</span> <span class="pre">'en')</span></code>。</p>
+<p>为了确保不遗漏任何翻译，最好复制已完成的语言文件并手动翻译它们。这种方法可以保留命令可能遗漏的任何唯一键。</p>
+<p>只需执行：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 指定新/更新翻译的区域设置</span>
+<span class="go">php spark lang:sync --target ru</span>
+
+<span class="go">// 或设置原始区域设置</span>
+<span class="go">php spark lang:sync --locale en --target ru</span>
+</pre></div>
+</div>
+<p>结果你将获得包含翻译键的文件。如果目标区域设置中存在重复键，则会保存这些键。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>新翻译中不匹配的键将被删除！</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="csp.html" class="btn btn-neutral float-left" title="内容安全策略" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="alternative_php.html" class="btn btn-neutral float-right" title="在视图文件中使用 PHP 替代语法" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2026 CodeIgniter 基金会.
+      <span class="lastupdated">最后更新于 2026-01-08.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+  
+<jinja2.runtime.BlockReference object at 0x7fc4a3883dd0>
+
+<div style="margin-top: 16px;">
+  <p>由 <a href="https://codeigniter.org.cn">CodeIgniter 中国开发者社区</a>翻译并制作</p>
+  <p style="margin-bottom: 0;">
+    <a href="https://github.com/CodeIgniter-Chinese/codeigniter4-user-guide" target="_blank">Github 简体中文翻译</a>
+    ·
+    <a href="https://codeigniter-chinese.github.io/codeigniter4-user-guide/codeigniter_user_guide.zip">离线版压缩包下载</a>
+    ·
+    <a href="https://codeigniter-chinese.github.io/codeigniter4-user-guide/CodeIgniter.pdf">PDF 版下载</a>
+  </p>
+</div>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

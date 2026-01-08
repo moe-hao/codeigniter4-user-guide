@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>版本 4.0.0-rc.1 &mdash; CodeIgniter 4.6.3 中文手册|用户手册|用户指南|中文文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/citheme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/citheme_dark.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script src="../_static/js/citheme.js"></script>
+        <script src="../_static/js/carbon.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="版本 4.0.0-beta.4" href="v4.0.0-beta.4.html" />
+    <link rel="prev" title="版本 4.0.0-rc.2" href="v4.0.0-rc.2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/ci-logo-text.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">欢迎使用 CodeIgniter4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/index.html">欢迎使用 CodeIgniter4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/requirements.html">服务器要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/credits.html">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/psr.html">PSR 兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">许可协议</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../installation/index.html">安装</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation/installing_composer.html">Composer 安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/installing_manual.html">手动安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/running.html">运行你的应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">故障排除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/deployment.html">部署</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">变更记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">从前一版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/repositories.html">CodeIgniter 仓库</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">构建你的第一个应用程序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">静态页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">新闻部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">创建新闻</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">结束语</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">CodeIgniter4 概览</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/structure.html">应用程序结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/mvc.html">模型、视图和控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/autoloader.html">自动加载文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/services.html">服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/factories.html">工厂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/http.html">处理 HTTP 请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/security.html">安全指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/goals.html">设计与架构目标</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">常规主题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/configuration.html">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">CodeIgniter URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">全局函数和常量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/logging.html">记录信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">错误处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">网页缓存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ajax.html">AJAX 请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/modules.html">代码模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">管理应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">处理多个环境</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../incoming/index.html">控制器和路由</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/routing.html">URI 路由</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/controllers.html">控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/filters.html">控制器过滤器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/auto_routing_improved.html">自动路由（改进版）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/message.html">HTTP 消息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/request.html">请求类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/incomingrequest.html">IncomingRequest 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/content_negotiation.html">内容协商</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/methodspoofing.html">HTTP 方法欺骗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/restful.html">RESTful 资源处理</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../outgoing/index.html">构建响应</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/views.html">视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_renderer.html">视图渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_layouts.html">视图布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_cells.html">视图单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_parser.html">视图解析器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_decorators.html">视图装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/table.html">HTML 表格类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/response.html">HTTP 响应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/api_responses.html">API 响应特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/csp.html">内容安全策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/localization.html">本地化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/alternative_php.html">在视图文件中使用 PHP 替代语法</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">使用数据库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">快速入门:使用示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">数据库配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">连接数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">运行查询</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">生成查询结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">查询辅助方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">查询构建器类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">事务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">获取元数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">自定义函数调用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/events.html">数据库事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">数据库实用工具</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">数据建模</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/model.html">使用 CodeIgniter 的模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/entities.html">使用实体类</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dbmgmt/index.html">管理数据库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/forge.html">数据库 Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/migration.html">数据库迁移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/seeds.html">数据库填充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/db_commands.html">数据库命令</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">类库参考</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">缓存驱动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cookies.html">Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cors.html">跨域资源共享 (CORS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/curlrequest.html">CURLRequest 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Email 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">加密服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/files.html">文件处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_collections.html">文件集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/honeypot.html">蜜罐类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/images.html">图像处理类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">分页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/publisher.html">Publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Session 库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/throttler.html">限速器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/time.html">时间与日期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">排版</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uploaded_files.html">处理上传的文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">使用 URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">User Agent 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/validation.html">数据验证</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">辅助函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">数组辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Cookie 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">日期辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/filesystem_helper.html">文件系统辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">表单辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">HTML 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Inflector 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">数字辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">安全辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/test_helper.html">测试辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">文本辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">URL 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">XML 辅助函数</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html">入门指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/database.html">数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/fabricator.html">生成数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/controllers.html">测试控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/feature.html">HTTP 测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/response.html">测试响应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/cli.html">测试 CLI 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/mocking.html">模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/benchmark.html">基准测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/debugging.html">调试应用程序</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">命令行使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_overview.html">CLI 概览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_controllers.html">通过 CLI 运行控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/spark_commands.html">Spark 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_commands.html">创建 Spark 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_generators.html">CLI 生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_library.html">CLI 库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_request.html">CLIRequest 类</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">扩展 CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extending/core_classes.html">创建核心系统类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/common.html">替换通用函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/events.html">事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/basecontroller.html">扩展控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/authentication.html">身份验证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/composer_packages.html">创建 Composer 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/contributing.html">为 CodeIgniter 做贡献</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/official_packages.html">官方包</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../installation/index.html">安装</a></li>
+          <li class="breadcrumb-item"><a href="index.html">变更记录</a></li>
+      <li class="breadcrumb-item active">版本 4.0.0-rc.1</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rc-1">
+<h1>版本 4.0.0-rc.1<a class="headerlink" href="#rc-1" title="此标题的永久链接"></a></h1>
+<p>发布日期:2019 年 9 月 3 日</p>
+<p><strong>CodeIgniter4 RC.1 版发布</strong></p>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id2" id="id6">增强功能</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id7">应用变更</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id8">消息变更</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id9">变更的文件</a></p></li>
+<li><p><a class="reference internal" href="#pr" id="id10">合并的 PR</a></p></li>
+</ul>
+</nav>
+<section id="id2">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">增强功能</a><a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<ul class="simple">
+<li><p>CI3 电子邮件移植到 CI4</p></li>
+<li><p>添加加密(基本)</p></li>
+<li><p>迁移重构和优化为更全面的功能(BC)</p></li>
+<li><p>向 ImageHandlerInterface 添加 convert()</p></li>
+<li><p>为下载禁用调试工具栏</p></li>
+<li><p>CLI 命令现在返回错误码(“spark”已更改)</p></li>
+<li><p>添加了 RESTful 控制器,以缩短 RESTful API 的开发时间</p></li>
+<li><p>作为 RESTful 支持的一部分,添加了 RouteCollection::presenter()</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">应用变更</a><a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<ul class="simple">
+<li><p>添加了 app/Common 以更轻松地重写常用函数</p></li>
+<li><p>添加了 Config/Email 和 Encryption</p></li>
+<li><p>修改了 Config/Migration,并具有不同的设置</p></li>
+<li><p>修复了 Controllers/Home,删除了不必要的模型引用</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">消息变更</a><a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<ul class="simple">
+<li><p>迁移具有新的和修改后的消息</p></li>
+<li><p>消息现在具有 RESTful 集</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">变更的文件</a><a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<p>变更文件的列表如下,带有 PR 编号:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>admin/</dt><dd><ul>
+<li><p>release-appstarter #2155</p></li>
+<li><p>release-framework #2155</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>app/</dt><dd><ul>
+<li><dl class="simple">
+<dt>Config/</dt><dd><ul>
+<li><p>Email #2092</p></li>
+<li><p>Encryption #2135</p></li>
+<li><p>Migrations #2065</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Controllers/</dt><dd><ul>
+<li><p>BaseController #2046</p></li>
+<li><p>Home #2145</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Common #2110</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>public/</p></li>
+<li><dl class="simple">
+<dt>system/</dt><dd><ul>
+<li><dl class="simple">
+<dt>API/</dt><dd><ul>
+<li><p>ResponseTrait #2131</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Autoloader/</dt><dd><ul>
+<li><p>Autoloader #2149</p></li>
+<li><p>FileLocator #2149</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Cache/Handlders/</dt><dd><ul>
+<li><p>RedisHandler #2144</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CLI/</dt><dd><ul>
+<li><p>CommandRunner #2164</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Commands/Database/</dt><dd><ul>
+<li><p>CreateMigration #2065</p></li>
+<li><p>Migrate #2065, 2137</p></li>
+<li><p>MigrateRefresh #2065, 2137</p></li>
+<li><p>MigrateRollback #2065, 2137</p></li>
+<li><p>MigrateStatus #2137</p></li>
+<li><p>MigrateVersion #2137</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Config/</dt><dd><ul>
+<li><p>BaseConfig #2082</p></li>
+<li><p>Services #2135, 2092</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Database/</dt><dd><ul>
+<li><p>BaseBuilder #2127, 2090, 2142, 2153, 2160, 2023, 2001</p></li>
+<li><p>MigrationRunner #2065, 2137</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Debug/</dt><dd><ul>
+<li><p>Toolbar #2118</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Email/</dt><dd><ul>
+<li><p>Email #2092</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Encryption/</dt><dd><ul>
+<li><p>EncrypterInterface #2135</p></li>
+<li><p>Encryption #2135</p></li>
+<li><p>Exceptions/EncryptionException #2135</p></li>
+<li><dl class="simple">
+<dt>Handlers/</dt><dd><ul>
+<li><p>BaseHandler #2135</p></li>
+<li><p>OpenSSLHandler #2135</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Exceptions/</dt><dd><ul>
+<li><p>ConfigException #2065</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Files/</dt><dd><ul>
+<li><p>File #2178</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Filters/</dt><dd><ul>
+<li><p>DebugToolbar #2118</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Helpers/</dt><dd><ul>
+<li><p>inflector_helper #2065</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Honeypot/</dt><dd><ul>
+<li><p>Honeypot #2177</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>HTTP/</dt><dd><ul>
+<li><p>DownloadResponse #2129</p></li>
+<li><p>Files/UploadedFile #2128</p></li>
+<li><p>Message &#64;2171</p></li>
+<li><p>Response #2166</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Images/</dt><dd><ul>
+<li><dl class="simple">
+<dt>Handlers/</dt><dd><p>-BaseHandler #2113, 2150
+- ImageMagickHandler #2151</p>
+</dd>
+</dl>
+</li>
+<li><p>BImageHandlerInterface #2113</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Language/en/</dt><dd><ul>
+<li><p>Email #2092</p></li>
+<li><p>Encryption #2135</p></li>
+<li><p>Migrations #2065, 2137</p></li>
+<li><p>RESTful #2165</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>RESTful/</dt><dd><ul>
+<li><p>ResourceController #2165</p></li>
+<li><p>ResourcePresenter #2165</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Router/</dt><dd><ul>
+<li><p>RouteCollection #2165</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Security/</dt><dd><ul>
+<li><p>Security #2027</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Session/Handlers/</dt><dd><ul>
+<li><p>RedisHandler #2125</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Test/</dt><dd><ul>
+<li><p>CIDatabaseTestCase #2137</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>bootstrap #2110</p></li>
+<li><p>CodeIgniter #2126, 2164</p></li>
+<li><p>Common #2109</p></li>
+<li><p>Entity #2112</p></li>
+<li><p>Model #2090</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>tests/_support/</dt><dd><ul>
+<li><p>RESTful/… #2165</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>tests/system/</dt><dd><ul>
+<li><dl class="simple">
+<dt>API/</dt><dd><ul>
+<li><p>ResponseTraitTest #2131</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Database/</dt><dd><ul>
+<li><dl class="simple">
+<dt>Builder/</dt><dd><ul>
+<li><p>GetTest #2142</p></li>
+<li><p>SelectTest #2160</p></li>
+<li><p>WhereTest #2001</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Live/</dt><dd><ul>
+<li><p>GroupTest #2160</p></li>
+<li><p>ModelTest #2090</p></li>
+<li><p>SelectTest #2160</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Migrations/MigrationRunnerTest #2065, 2137</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Encryption/</dt><dd><ul>
+<li><p>EncryptionTest #2135</p></li>
+<li><p>OpenSSLHandlerTest #2135</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Helpers/</dt><dd><ul>
+<li><p>InflectorHelperTest #2065</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>HTTP/</dt><dd><ul>
+<li><p>DownloadResponseTest #2129</p></li>
+<li><p>MessageTest #2171</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Images/</dt><dd><ul>
+<li><p>GDHandlerTest #2113</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>RESTful/</dt><dd><ul>
+<li><p>ResourceControllerTest #2165</p></li>
+<li><p>ResourcePresenterTest #2165</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Router/</dt><dd><ul>
+<li><p>RouteCollectionTest #2165</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>ControllerTest #2165</p></li>
+<li><p>EntityTest #2112</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>user_guide_src/</dt><dd><ul>
+<li><dl class="simple">
+<dt>changelogs/</dt><dd><ul>
+<li><p>next #2154</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>database/</dt><dd><ul>
+<li><p>query_builder #2160, 2001</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>dbmgmt/</dt><dd><ul>
+<li><p>migrations #2065, 2132, 2136, 2154, 2137</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>extending/</dt><dd><ul>
+<li><p>common #2162</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>helpers/</dt><dd><ul>
+<li><p>inflector_helper #2065</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>incoming/</dt><dd><ul>
+<li><p>restful #2165</p></li>
+<li><p>routing #2165</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>libraries/</dt><dd><ul>
+<li><p>email #2092, 2154</p></li>
+<li><p>encryption #2135</p></li>
+<li><p>images #2113, 2169</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>outgoing/</dt><dd><ul>
+<li><p>api_responses #2131</p></li>
+<li><p>localization #2134</p></li>
+<li><p>response #2129</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>testing/</dt><dd><ul>
+<li><p>database #2137</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>CONTRIBUTING.md #2010</p></li>
+<li><p>README.md #2010</p></li>
+<li><p>spark</p></li>
+</ul>
+</section>
+<section id="pr">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">合并的 PR</a><a class="headerlink" href="#pr" title="此标题的永久链接"></a></h2>
+<ul class="simple">
+<li><p>#2178 添加缺失 finfo_open 的回退方法</p></li>
+<li><p>#2177 修复缺失的表单关闭标签</p></li>
+<li><p>#2171 Setheader 重复</p></li>
+<li><p>#2169 为图像库添加 $quality 用法</p></li>
+<li><p>#2166 Cookie 错误</p></li>
+<li><p>#2165 RESTful 帮助</p></li>
+<li><p>#2164 CLI 命令失败时退出错误码</p></li>
+<li><p>#2162 用户指南针对 Common.php 的更新</p></li>
+<li><p>#2160 为 BaseBuilder 添加 SelectCount</p></li>
+<li><p>#2155 在启动器中包含 .gitignore</p></li>
+<li><p>#2153 使用 LIMIT 时修复 countAllResults 的错误</p></li>
+<li><p>#2154 修复电子邮件和迁移文档;更新变更日志</p></li>
+<li><p>#2151 ImageMagick-&gt;save() 的返回值</p></li>
+<li><p>#2150 针对 Image-&gt;fit() 的新逻辑</p></li>
+<li><p>#2149 listNamespaceFiles:确保尾随斜杠</p></li>
+<li><p>#2145 从 Home 控制器中删除 UserModel 引用</p></li>
+<li><p>#2144 更新 Redis 遗留函数</p></li>
+<li><p>#2142 修复获取 SQL 时 BaseBuilder 重置</p></li>
+<li><p>#2137 新的迁移逻辑</p></li>
+<li><p>#2136 迁移用户指南修复</p></li>
+<li><p>#2135 加密</p></li>
+<li><p>#2134 修复本地化说明</p></li>
+<li><p>#2132 更新迁移用户指南</p></li>
+<li><p>#2131 向 APIResponseTrait 添加 No Content 响应</p></li>
+<li><p>#2129 向 DownloadResponse 添加 setFileName()</p></li>
+<li><p>#2128 回退到 clientExtension 进行扩展名猜测</p></li>
+<li><p>#2127 更新 limit 函数,因为 $offset 是可以为空的</p></li>
+<li><p>#2126 将 storePreviousURL 限制到某些请求</p></li>
+<li><p>#2125 更新 redis 会话处理程序以支持 redis 5.0.x</p></li>
+<li><p>#2118 在下载上禁用工具栏</p></li>
+<li><p>#2113 添加 Image-&gt;convert()</p></li>
+<li><p>#2112 更新 <cite>Entity.php</cite> 中的 <cite>__isset</cite> 方法</p></li>
+<li><p>#2110 添加了 app/Common.php</p></li>
+<li><p>#2109 修复检查 db_connect() 是否存在的拼写错误</p></li>
+<li><p>#2092 原始电子邮件移植</p></li>
+<li><p>#2090 修复在未设置条件的情况下防止软删除所有</p></li>
+<li><p>#2082 更新 BaseConfig.php</p></li>
+<li><p>#2065 更新的迁移逻辑以获得更全面的功能</p></li>
+<li><p>#2046 清理基本控制器代码</p></li>
+<li><p>#2027 修复 CSRF 散列重新生成</p></li>
+<li><p>#2023 $value 不必为数组</p></li>
+<li><p>#2010 修复 CSRF 哈希再生器词改动</p></li>
+<li><p>#2001 BaseBuilder 中的子查询</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="v4.0.0-rc.2.html" class="btn btn-neutral float-left" title="版本 4.0.0-rc.2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="v4.0.0-beta.4.html" class="btn btn-neutral float-right" title="版本 4.0.0-beta.4" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2026 CodeIgniter 基金会.
+      <span class="lastupdated">最后更新于 2026-01-08.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+  
+<jinja2.runtime.BlockReference object at 0x7fc4a3b47810>
+
+<div style="margin-top: 16px;">
+  <p>由 <a href="https://codeigniter.org.cn">CodeIgniter 中国开发者社区</a>翻译并制作</p>
+  <p style="margin-bottom: 0;">
+    <a href="https://github.com/CodeIgniter-Chinese/codeigniter4-user-guide" target="_blank">Github 简体中文翻译</a>
+    ·
+    <a href="https://codeigniter-chinese.github.io/codeigniter4-user-guide/codeigniter_user_guide.zip">离线版压缩包下载</a>
+    ·
+    <a href="https://codeigniter-chinese.github.io/codeigniter4-user-guide/CodeIgniter.pdf">PDF 版下载</a>
+  </p>
+</div>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

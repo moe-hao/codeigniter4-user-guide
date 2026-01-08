@@ -1,834 +1,831 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Dates and Times &mdash; CodeIgniter 4.0.0-dev 中文手册|用户手册|用户指南|中文文档</title>
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>时间与日期 &mdash; CodeIgniter 4.6.3 中文手册|用户手册|用户指南|中文文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/citheme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/citheme_dark.css" />
 
   
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-    <link rel="shortcut icon" href="../_static/ci-icon.ico"/>
-  
-
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-
-  
-  
-    
-
-  
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/citheme.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CodeIgniter 4.0.0-dev 中文手册|用户手册|用户指南|中文文档" href="../index.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script src="../_static/js/citheme.js"></script>
+        <script src="../_static/js/carbon.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="排版" href="typography.html" />
+    <link rel="prev" title="限速器" href="throttler.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
-
-  <div id="nav">
-  <div id="nav_inner">
-    
-    
-    
-      <div id="pulldown-menu" class="ciNav">
-        <ul>
-<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Welcome to CodeIgniter4</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../intro/index.html">Welcome to CodeIgniter4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro/requirements.html">Server Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro/credits.html">Credits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro/psr.html">PSR 规范</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Downloading CodeIgniter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Upgrading From a Previous Version</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installation/local_server.html">Local Development Server</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">加载静态页</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">News section</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Create news items</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusion</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">CodeIgniter4 概览</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/structure.html">Application Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/mvc.html">模型，视图和控制器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/autoloader.html">Autoloading Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/services.html">Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/http.html">Working With HTTP Requests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/security.html">安全指南</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/index.html">常规主题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../general/configuration.html">利用配置文件开始工作</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">CodeIgniter URLs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">控制器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/view_cells.html">View Cells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/view_renderer.html">View Renderer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/view_parser.html">View Parser</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Helper Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Creating Core System Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/events.html">Events - Extending the Framework Core</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Global Functions and Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">URI 路由</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/filters.html">Controller Filters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/logging.html">Logging Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Error Handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/debugging.html">Debugging Your Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Web Page Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Running via the CLI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/cli_commands.html">Custom CLI Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/modules.html">Code Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Managing your Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Handling Multiple Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Alternate PHP Syntax for View Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/testing.html">Testing</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">类库参考</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_responses.html">API 响应特性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">基准测试类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">缓存驱动器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html">CLI Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_negotiation.html">Content Negotiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="curlrequest.html">CURLRequest Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="images.html">Image Manipulation Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="files.html">使用文件类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="incomingrequest.html">IncomingRequest 类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="localization.html">Localization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="message.html">HTTP Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html">请求类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="response.html">HTTP 响应</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html">Security Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sessions.html">Session Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="throttler.html">Throttler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="typography.html">Typography</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uploaded_files.html">Working with Uploaded Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uri.html">Working with URIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../database/index.html">数据库参考</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">数据库快速入门：示例代码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">数据库配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">连接数据库</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">查询</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/results.html">生成查询结果</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">查询辅助函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Query Builder 类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">事务</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">获取元数据</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">自定义函数调用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/model.html">使用 CodeIgniter 的模型</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/entities.html">使用 Entity 类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">使用 Database Forge 维护数据库</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/migration.html">数据库迁徙</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/seeds.html">数据库填充</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/events.html">数据库事件</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">辅助函数</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Cookie Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/filesystem_helper.html">Filesystem Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Form Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">HTML Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Inflector Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Number Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Security Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Text Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">URL Helper</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/guidelines.html">Contribution Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/workflow.html">Contribution Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/signing.html">Contribution Signing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/roadmap.html">CodeIgniter4 Roadmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/internals.html">CodeIgniter Internals Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/documentation.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/styleguide.html">PHP Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer's Certificate of Origin 1.1</a></li>
-</ul>
-</li>
-</ul>
-
-      </div>
-    
-      
-  </div>
-</div>
-<div id="nav2">
-  <a href="#" id="openToc">
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAARgAA/+4ADkFkb2JlAGTAAAAAAf/bAIQABAMDAwMDBAMDBAYEAwQGBwUEBAUHCAYGBwYGCAoICQkJCQgKCgwMDAwMCgwMDQ0MDBERERERFBQUFBQUFBQUFAEEBQUIBwgPCgoPFA4ODhQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQU/8AAEQgAKwCaAwERAAIRAQMRAf/EAHsAAQAABwEBAAAAAAAAAAAAAAABAwQFBgcIAgkBAQAAAAAAAAAAAAAAAAAAAAAQAAEDAwICBwYEAgsAAAAAAAIBAwQAEQUSBiEHkROTVNQWGDFBUVIUCHEiMtOUFWGBobHRQlMkZIRVEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDSC+ygkOOaUoKigUCgUCgUCgUCgUCgUCgUCgkuGguIP9FBMFb0Hqg7We+3jlmIqqYFf4ub+/QYlnOR/LqIBKGFUbf8qWv971BytQXXE7Y3Lnm3HsFhp2TaZJAdchRXpIgSpdEJWxJEW3xoKV7F5OMy7JkQn2o7D6w33XGjEAkoiqrJEqIiOIiKuhePCgqp22dyYyS3CyWHnQ5joG61HkRnmnTbaFSMhExRVQRRVJU9iUHjE7ez+fJ0MFipmUNhBV8YUd2SoIV9KkjQla9ltegttBdPLW4/qocL+UTfrMiHW4+P9M71shuyrqaHTcxsl7jegpsji8nh5ZwMvDfgTm0RTjSmjYdFCS6KoOIipdFunCgmNYTMv457MMY6U7iI6oMieDDhRm1VbIhuoOkbqtuK0Hpzb+eZcYZexUxt6UyUqK2cd0SdjtgrhOgijcgERUlJOCIl6CpgbP3blRI8XgMjNARAyKNDfeRBdFDBVUAXgQrqH4pxoJTu2NysY97LP4ac1io5q1InHFeGO24LnVKJuKOkSQ/yKir+rh7aCLG1dzypZQI2FnvTgccYOM3FeN0XWERXAUEFVQgQkUktdLpegm+Td3/Xli/L+S/mYNJIOF9G/wBeLKrZHFb0akG6W1WtQWSg3Dyg5e7V3fipE3O4/wCrktyzYA+ufas2LbZIlmnAT2kvuoN1wft95augilglX/tzP3qCu9O3LL/wV/i5v79BvmTADq14UGu91467Z6U9y0HzH/ncj/U/sT/CgynZG7I2NezpZGUjIycJkYkZSG+uQ81pbBNKLxJfjwoMqZ3/ALYHl35AJ7/cuwHcu5k7r1Q5pHetBjquqVVJWGxj9Zrtcl/Ggy3dHMvauR3HFZj5nHNxSyW5JISYDMoIwx8tFIGHZhPNaykGapr6rUAiicEoMG21lMRj8buPAz8xhJrr7uOeiPTCyAwXUaGR1mgozbTusOsFLEiJ7fbQa/h7gcjy2H3V6xppwDNtUSxCJIqp7valBuWVzJ22xuCROXNNZiJkMtms0DbjUkAZjzoDrTMd9dDRI44ZC2YsrYdKWP2WDT2S3N9dNdlRYrGMYc06IURXSYb0igrpWS485xVNS6nF4rwslkoMwnbpgZLB7bmt5uMweAhDEl4B5uSLzzqTnnyVpW2jaJHRMSIjdDiiotvy3DOE5rYTEbkl5yFn28k7JyG4c7AU2HtLH1uKfaiMPI40CdYbpNtmLdwTSn5rewLNld+7TLdeal4WarWBkbVKBjgdElMJJwAAY5fl4kB3b1fp4XvagsGS3FjJfLzDNtS8aeXx7LzT7TyzByQE5PccRGRC0ZRUDRV6y62vbjagzLmJzS2vuPK43JY6aP1TW6Jz+RIWyFtyC06y3EkiiinAo7YCqfq1AqqnGgsOH3lhZO8d1pmcpB8j5XIm9OYlBJSQ/FSS4427DKO0RC8AlcEMhFdViRR1WDWR5t3WXVuL1d106kG9vdeye2g60+1FDyW0shIcXVpyroXt8I8dfd+NB1vioAdWnD3UF1+gD4UFc6CEKpagxXN43rwJLUHz7yX2c8zokt9uHlsPIhA4aRnnHJTLptIS6CNsY7iASpxUUMkReGpfbQW0vtN5pitvrsN28rwtBD0nc0+/Yft5XhaB6TuaXfsP28rwtA9J3NPv2H7eV4Wgek7mn37D9vK8LQPSdzT79h+3leFoHpO5pd+w/byvC0D0nc0u/Yft5XhaB6TuaXfsP28rwtA9J3NLv2H7eV4Wgek7ml37D9vK8LQPSdzS79h+3leFoHpO5p9+w/byvC0E9r7Reazy2HIYVPxkS/CUHVn26cosxyv2g7h89LYmZSXOenvLEQ1YaQ222RATcQCP8rSGqqA8S02W2pQ6FhMoAIlqCtsnwoCpdKClejI4i3Sgtb+GBxVuNBSFt1pV/RQefLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8uM/JQPLjPyUDy4z8lA8utJ/koJ7WCbBU/LQXOPAFq1koK8B0pag90CggtBBf6qB0UDooHRQOigdFA6KB0UDooHRQOigdFA6KB0UDooI0EaBQf//Z" title="Toggle Table of Contents" alt="Toggle Table of Contents" />
-  </a>
-</div>
-
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="../index.html" class="fa fa-home"> CodeIgniter4</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/ci-logo-text.svg" class="logo" alt="Logo"/>
+          </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-          
-          
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Welcome to CodeIgniter4</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../intro/index.html">Welcome to CodeIgniter4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro/requirements.html">Server Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro/credits.html">Credits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro/psr.html">PSR 规范</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">欢迎使用 CodeIgniter4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/index.html">欢迎使用 CodeIgniter4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/requirements.html">服务器要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/credits.html">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/psr.html">PSR 兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">许可协议</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../installation/downloads.html">Downloading CodeIgniter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">Upgrading From a Previous Version</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installation/local_server.html">Local Development Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/installing_composer.html">Composer 安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/installing_manual.html">手动安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/running.html">运行你的应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">故障排除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/deployment.html">部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelogs/index.html">变更记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">从前一版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/repositories.html">CodeIgniter 仓库</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">加载静态页</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">News section</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">Create news items</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">构建你的第一个应用程序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">静态页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">新闻部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">创建新闻</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">结束语</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">CodeIgniter4 概览</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/structure.html">Application Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/mvc.html">模型，视图和控制器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/autoloader.html">Autoloading Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/services.html">Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../concepts/http.html">Working With HTTP Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/structure.html">应用程序结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/mvc.html">模型、视图和控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/autoloader.html">自动加载文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/services.html">服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/factories.html">工厂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/http.html">处理 HTTP 请求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../concepts/security.html">安全指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/goals.html">设计与架构目标</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../general/index.html">常规主题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../general/configuration.html">利用配置文件开始工作</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">CodeIgniter URLs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/controllers.html">控制器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/views.html">Views</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/view_cells.html">View Cells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/view_renderer.html">View Renderer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/view_parser.html">View Parser</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">Helper Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/core_classes.html">Creating Core System Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/events.html">Events - Extending the Framework Core</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">Global Functions and Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/routing.html">URI 路由</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/filters.html">Controller Filters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/logging.html">Logging Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">Error Handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/debugging.html">Debugging Your Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">Web Page Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/cli.html">Running via the CLI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/cli_commands.html">Custom CLI Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/modules.html">Code Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">Managing your Applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">Handling Multiple Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/alternative_php.html">Alternate PHP Syntax for View Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../general/testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/configuration.html">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">CodeIgniter URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">全局函数和常量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/logging.html">记录信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">错误处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">网页缓存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ajax.html">AJAX 请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/modules.html">代码模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">管理应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">处理多个环境</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">类库参考</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_responses.html">API 响应特性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">基准测试类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">缓存驱动器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html">CLI Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_negotiation.html">Content Negotiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="curlrequest.html">CURLRequest Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="images.html">Image Manipulation Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="files.html">使用文件类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="incomingrequest.html">IncomingRequest 类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="localization.html">Localization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="message.html">HTTP Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pagination.html">Pagination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html">请求类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="response.html">HTTP 响应</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html">Security Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sessions.html">Session Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="throttler.html">Throttler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="typography.html">Typography</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uploaded_files.html">Working with Uploaded Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uri.html">Working with URIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="validation.html">Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../incoming/index.html">控制器和路由</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/routing.html">URI 路由</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/controllers.html">控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/filters.html">控制器过滤器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/auto_routing_improved.html">自动路由（改进版）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/message.html">HTTP 消息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/request.html">请求类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/incomingrequest.html">IncomingRequest 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/content_negotiation.html">内容协商</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/methodspoofing.html">HTTP 方法欺骗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incoming/restful.html">RESTful 资源处理</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../database/index.html">数据库参考</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">数据库快速入门：示例代码</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outgoing/index.html">构建响应</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/views.html">视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_renderer.html">视图渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_layouts.html">视图布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_cells.html">视图单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_parser.html">视图解析器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_decorators.html">视图装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/table.html">HTML 表格类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/response.html">HTTP 响应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/api_responses.html">API 响应特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/csp.html">内容安全策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/localization.html">本地化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/alternative_php.html">在视图文件中使用 PHP 替代语法</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">使用数据库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">快速入门:使用示例</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">数据库配置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">连接数据库</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">查询</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">运行查询</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../database/results.html">生成查询结果</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">查询辅助函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">Query Builder 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">查询辅助方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">查询构建器类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">事务</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">获取元数据</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">自定义函数调用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/model.html">使用 CodeIgniter 的模型</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/entities.html">使用 Entity 类</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/forge.html">使用 Database Forge 维护数据库</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/migration.html">数据库迁徙</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../database/seeds.html">数据库填充</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../database/events.html">数据库事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">数据库实用工具</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">数据建模</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/model.html">使用 CodeIgniter 的模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/entities.html">使用实体类</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dbmgmt/index.html">管理数据库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/forge.html">数据库 Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/migration.html">数据库迁移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/seeds.html">数据库填充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/db_commands.html">数据库命令</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">类库参考</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="caching.html">缓存驱动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookies.html">Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cors.html">跨域资源共享 (CORS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="curlrequest.html">CURLRequest 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption.html">加密服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files.html">文件处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_collections.html">文件集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="honeypot.html">蜜罐类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="images.html">图像处理类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pagination.html">分页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publisher.html">Publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sessions.html">Session 库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="throttler.html">限速器</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">时间与日期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html">排版</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploaded_files.html">处理上传的文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uri.html">使用 URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_agent.html">User Agent 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validation.html">数据验证</a></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">辅助函数</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Cookie Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/filesystem_helper.html">Filesystem Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">Form Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">HTML Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Inflector Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">Number Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">Security Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">Text Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">URL Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">数组辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Cookie 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">日期辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/filesystem_helper.html">文件系统辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">表单辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">HTML 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Inflector 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">数字辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">安全辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/test_helper.html">测试辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">文本辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">URL 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">XML 辅助函数</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/guidelines.html">Contribution Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/workflow.html">Contribution Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/signing.html">Contribution Signing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/roadmap.html">CodeIgniter4 Roadmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/internals.html">CodeIgniter Internals Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/documentation.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing/styleguide.html">PHP Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer's Certificate of Origin 1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html">入门指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/database.html">数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/fabricator.html">生成数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/controllers.html">测试控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/feature.html">HTTP 测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/response.html">测试响应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/cli.html">测试 CLI 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/mocking.html">模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/benchmark.html">基准测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/debugging.html">调试应用程序</a></li>
 </ul>
 </li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">命令行使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_overview.html">CLI 概览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_controllers.html">通过 CLI 运行控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/spark_commands.html">Spark 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_commands.html">创建 Spark 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_generators.html">CLI 生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_library.html">CLI 库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_request.html">CLIRequest 类</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">扩展 CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extending/core_classes.html">创建核心系统类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/common.html">替换通用函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/events.html">事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/basecontroller.html">扩展控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/authentication.html">身份验证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/composer_packages.html">创建 Composer 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/contributing.html">为 CodeIgniter 做贡献</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="official_packages.html">官方包</a></li>
+</ul>
 
-          
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">CodeIgniter4</a>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CodeIgniter</a>
       </nav>
 
-
-      
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          <div role="navigation" aria-label="页面导航">
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
-    <li>Dates and Times</li>
-    <li class="wy-breadcrumbs-aside">
-      
-    </li>
-    <div style="float:right;margin-left:5px;" id="closeMe">
-      <img title="Classic Layout" alt="classic layout" src="data:image/gif;base64,R0lGODlhFAAUAJEAAAAAADMzM////wAAACH5BAUUAAIALAAAAAAUABQAAAImlI+py+0PU5gRBRDM3DxbWoXis42X13USOLauUIqnlsaH/eY6UwAAOw==" />
-    </div>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">类库参考</a></li>
+      <li class="breadcrumb-item active">时间与日期</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document">
-            
-  <div class="section" id="dates-and-times">
-<h1>Dates and Times<a class="headerlink" href="#dates-and-times" title="永久链接至标题">¶</a></h1>
-<p>CodeIgniter provides a fully-localized, immutable, date/time class that is built on PHP's DateTime object, but uses the Intl
-extension's features to convert times across timezones and display the output correctly for different locales. This class
-is the <strong>Time</strong> class and lives in the <strong>CodeIgniterI18n</strong> namespace.</p>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>时间与日期<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<p>CodeIgniter 提供了一个完全本地化、不可变的日期/时间类，该类基于 PHP 的 DateTimeImmutable 类构建，但利用 Intl 扩展的功能来转换时区时间，并针对不同区域设置正确显示输出。这个类就是 <code class="docutils literal notranslate"><span class="pre">Time</span></code> 类，位于 <code class="docutils literal notranslate"><span class="pre">CodeIgniter\I18n</span></code> 命名空间。</p>
 <div class="admonition note">
-<p class="first admonition-title">注解</p>
-<p class="last">Since the Time class extends DateTime, if there are features that you need that this class doesn't provide,
-you can likely find them within the DateTime class itself.</p>
+<p class="admonition-title">备注</p>
+<p>由于 Time 类继承自 <code class="docutils literal notranslate"><span class="pre">DateTimeImmutable</span></code>，如果你需要本类未提供的功能，可以在 <a class="reference external" href="https://www.php.net/manual/zh/class.datetimeimmutable.php">DateTimeImmutable</a> 类本身中找到这些功能。</p>
 </div>
-<div class="contents local topic" id="page-contents">
-<p class="topic-title first">Page Contents</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在 v4.3.0 之前，Time 类继承自 <code class="docutils literal notranslate"><span class="pre">DateTime</span></code>，某些继承的方法会改变当前对象状态。此问题已在 v4.3.0 中修复。如果需要向后兼容旧的 Time 类，可以暂时使用已弃用的 <code class="docutils literal notranslate"><span class="pre">TimeLegacy</span></code> 类。</p>
+</div>
+<nav class="contents local" id="id2">
 <ul class="simple">
-<li><a class="reference internal" href="#instantiating" id="id3">Instantiating</a><ul>
-<li><a class="reference internal" href="#now" id="id4">now()</a></li>
-<li><a class="reference internal" href="#parse" id="id5">parse()</a></li>
-<li><a class="reference internal" href="#today" id="id6">today()</a></li>
-<li><a class="reference internal" href="#yesterday" id="id7">yesterday()</a></li>
-<li><a class="reference internal" href="#tomorrow" id="id8">tomorrow()</a></li>
-<li><a class="reference internal" href="#createfromdate" id="id9">createFromDate()</a></li>
-<li><a class="reference internal" href="#createfromtime" id="id10">createFromTime()</a></li>
-<li><a class="reference internal" href="#create" id="id11">create()</a></li>
-<li><a class="reference internal" href="#createfromformat" id="id12">createFromFormat()</a></li>
-<li><a class="reference internal" href="#createfromtimestamp" id="id13">createFromTimestamp()</a></li>
-<li><a class="reference internal" href="#instance" id="id14">instance()</a></li>
-<li><a class="reference internal" href="#todatetime" id="id15">toDateTime()</a></li>
+<li><p><a class="reference internal" href="#id3" id="id11">实例化</a></p>
+<ul>
+<li><p><a class="reference internal" href="#now" id="id12">now()</a></p></li>
+<li><p><a class="reference internal" href="#parse" id="id13">parse()</a></p></li>
+<li><p><a class="reference internal" href="#today" id="id14">today()</a></p></li>
+<li><p><a class="reference internal" href="#yesterday" id="id15">yesterday()</a></p></li>
+<li><p><a class="reference internal" href="#tomorrow" id="id16">tomorrow()</a></p></li>
+<li><p><a class="reference internal" href="#createfromdate" id="id17">createFromDate()</a></p></li>
+<li><p><a class="reference internal" href="#createfromtime" id="id18">createFromTime()</a></p></li>
+<li><p><a class="reference internal" href="#create" id="id19">create()</a></p></li>
+<li><p><a class="reference internal" href="#createfromformat" id="id20">createFromFormat()</a></p></li>
+<li><p><a class="reference internal" href="#createfromtimestamp" id="id21">createFromTimestamp()</a></p></li>
+<li><p><a class="reference internal" href="#createfrominstance" id="id22">createFromInstance()</a></p></li>
+<li><p><a class="reference internal" href="#todatetime" id="id23">toDateTime()</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#displaying-the-value" id="id16">Displaying the Value</a><ul>
-<li><a class="reference internal" href="#tolocalizedstring" id="id17">toLocalizedString()</a></li>
-<li><a class="reference internal" href="#todatetimestring" id="id18">toDateTimeString()</a></li>
-<li><a class="reference internal" href="#todatestring" id="id19">toDateString()</a></li>
-<li><a class="reference internal" href="#totimestring" id="id20">toTimeString()</a></li>
-<li><a class="reference internal" href="#humanize" id="id21">humanize()</a></li>
+<li><p><a class="reference internal" href="#id5" id="id24">显示值</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tolocalizedstring" id="id25">toLocalizedString()</a></p></li>
+<li><p><a class="reference internal" href="#todatetimestring" id="id26">toDateTimeString()</a></p></li>
+<li><p><a class="reference internal" href="#todatestring" id="id27">toDateString()</a></p></li>
+<li><p><a class="reference internal" href="#totimestring" id="id28">toTimeString()</a></p></li>
+<li><p><a class="reference internal" href="#humanize" id="id29">humanize()</a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#working-with-individual-values" id="id22">Working with Individual Values</a><ul>
-<li><a class="reference internal" href="#getage" id="id23">getAge()</a></li>
-<li><a class="reference internal" href="#getdst" id="id24">getDST()</a></li>
-<li><a class="reference internal" href="#getlocal" id="id25">getLocal()</a></li>
-<li><a class="reference internal" href="#getutc" id="id26">getUtc()</a></li>
-<li><a class="reference internal" href="#gettimezone" id="id27">getTimezone()</a></li>
-<li><a class="reference internal" href="#gettimezonename" id="id28">getTimezoneName()</a><ul>
-<li><a class="reference internal" href="#setters" id="id29">Setters</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#settimezone" id="id30">setTimezone()</a></li>
-<li><a class="reference internal" href="#settimestamp" id="id31">setTimestamp()</a><ul>
-<li><a class="reference internal" href="#modifying-the-value" id="id32">Modifying the Value</a></li>
-<li><a class="reference internal" href="#comparing-two-times" id="id33">Comparing Two Times</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#equals" id="id34">equals()</a></li>
-<li><a class="reference internal" href="#sameas" id="id35">sameAs()</a></li>
-<li><a class="reference internal" href="#isbefore" id="id36">isBefore()</a></li>
-<li><a class="reference internal" href="#isafter" id="id37">isAfter()</a><ul>
-<li><a class="reference internal" href="#viewing-differences" id="id38">Viewing Differences</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id2" id="id39">humanize()</a></li>
+<li><p><a class="reference internal" href="#id6" id="id30">处理独立值</a></p>
+<ul>
+<li><p><a class="reference internal" href="#getter" id="id31">Getter 方法</a></p></li>
+<li><p><a class="reference internal" href="#setter" id="id32">Setter 方法</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id33">修改值</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id34">比较两个时间</a></p></li>
+<li><p><a class="reference internal" href="#time-viewing-differences" id="id35">查看差异</a></p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="instantiating">
-<h2><a class="toc-backref" href="#id3">Instantiating</a><a class="headerlink" href="#instantiating" title="永久链接至标题">¶</a></h2>
-<p>There are several ways that a new Time instance can be created. The first is simply to create a new instance
-like any other class. When you do it this way, you can pass in a string representing the desired time. This can
-be any string that PHP's strtotime function can parse:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+</nav>
+<section id="id3">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">实例化</a><a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<p>创建新的 Time 实例有几种方式。第一种是像普通类一样创建新实例。</p>
+<p>这种方式下，你可以传入表示预期时间的字符串。这可以是 PHP 的 <a class="reference external" href="https://www.php.net/manual/zh/class.datetimeimmutable.php">DateTimeImmutable</a> 构造函数能解析的任何字符串。详情参见 <a class="reference external" href="https://www.php.net/manual/zh/datetime.formats.php">支持的日期和时间格式</a>。</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="nv">$myTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Time</span><span class="p">(</span><span class="s1">&#39;+3 week&#39;</span><span class="p">);</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Time</span><span class="p">(</span><span class="s1">&#39;2024-01-01&#39;</span><span class="p">);</span>
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Time</span><span class="p">(</span><span class="s1">&#39;2024-01-01 12:00:00&#39;</span><span class="p">);</span>
 <span class="nv">$myTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Time</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">);</span>
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Time</span><span class="p">(</span><span class="s1">&#39;+3 week&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>You can pass in strings representing the timezone and the locale in the second and parameters, respectively. Timezones
-can be any supported by PHP's <a class="reference external" href="http://php.net/manual/en/timezones.php">DateTimeZone</a> class. The locale can be
-any supported by PHP's <a class="reference external" href="http://php.net/manual/en/class.locale.php">Locale</a> class. If no locale or timezone is
-provided, the application defaults will be used.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$myTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Time</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+<p>你可以在第二个和第三个参数中分别传入表示时区和区域设置的字符串。时区可以是 PHP 的 <a class="reference external" href="https://www.php.net/manual/zh/timezones.php">DateTimeZone</a> 类支持的任何时区。区域设置可以是 PHP 的 <a class="reference external" href="https://www.php.net/manual/zh/class.locale.php">Locale</a> 类支持的任何区域。如果未提供区域或时区，将使用应用默认设置。</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Time</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="section" id="now">
-<h3><a class="toc-backref" href="#id4">now()</a><a class="headerlink" href="#now" title="永久链接至标题">¶</a></h3>
-<p>The Time class has several helper methods to instantiate the class. The first of these is the <strong>now()</strong> method
-that returns a new instance set to the current time. You can pass in strings representing the timezone and the locale
-in the second and parameters, respectively. If no locale or timezone is provided, the application defaults will be used.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+<section id="now">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">now()</a><a class="headerlink" href="#now" title="此标题的永久链接"></a></h3>
+<p>Time 类有几个辅助方法来实例化该类。第一个是 <code class="docutils literal notranslate"><span class="pre">now()</span></code> 方法，返回设置为当前时间的新实例。你可以在第二个和第三个参数中分别传入时区和区域设置的字符串。如果未提供区域或时区，将使用应用默认设置。</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="parse">
-<h3><a class="toc-backref" href="#id5">parse()</a><a class="headerlink" href="#parse" title="永久链接至标题">¶</a></h3>
-<p>This helper method is a static version of the default constructor. It takes a string acceptable as DateTime's
-constructor as the first parameter, a timezone as the second parameter, and the locale as the third parameter.:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;next Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+</section>
+<section id="parse">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">parse()</a><a class="headerlink" href="#parse" title="此标题的永久链接"></a></h3>
+<p>这个辅助方法是默认构造函数的静态版本。它接受 DateTimeImmutable 构造函数可接受的字符串作为第一个参数，时区作为第二个参数，区域设置作为第三个参数：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;next Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="today">
-<h3><a class="toc-backref" href="#id6">today()</a><a class="headerlink" href="#today" title="永久链接至标题">¶</a></h3>
-<p>Returns a new instance with the date set to the current date, and the time set to midnight. It accepts strings
-for the timezone and locale in the second and third parameters:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">today</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+</section>
+<section id="today">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">today()</a><a class="headerlink" href="#today" title="此标题的永久链接"></a></h3>
+<p>返回日期设置为当前日期、时间设置为午夜的新实例。第一个和第二个参数接受时区和区域设置的字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">today</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="yesterday">
-<h3><a class="toc-backref" href="#id7">yesterday()</a><a class="headerlink" href="#yesterday" title="永久链接至标题">¶</a></h3>
-<p>Returns a new instance with the date set to the yesterday's date and the time set to midnight. It accepts strings
-for the timezone and locale in the second and third parameters:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">yesterday</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+</section>
+<section id="yesterday">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">yesterday()</a><a class="headerlink" href="#yesterday" title="此标题的永久链接"></a></h3>
+<p>返回日期设置为昨天日期、时间设置为午夜的新实例。第一个和第二个参数接受时区和区域设置的字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">yesterday</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="tomorrow">
-<h3><a class="toc-backref" href="#id8">tomorrow()</a><a class="headerlink" href="#tomorrow" title="永久链接至标题">¶</a></h3>
-<p>Returns a new instance with the date set to the tomorrow's date and the time set to midnight. It accepts strings
-for the timezone and locale in the second and third parameters:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">tomorrow</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+</section>
+<section id="tomorrow">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">tomorrow()</a><a class="headerlink" href="#tomorrow" title="此标题的永久链接"></a></h3>
+<p>返回日期设置为明天日期、时间设置为午夜的新实例。第一个和第二个参数接受时区和区域设置的字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$myTime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">tomorrow</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="createfromdate">
-<h3><a class="toc-backref" href="#id9">createFromDate()</a><a class="headerlink" href="#createfromdate" title="永久链接至标题">¶</a></h3>
-<p>Given separate inputs for <strong>year</strong>, <strong>month</strong>, and <strong>day</strong>, will return a new instance. If any of these parameters
-are not provided, it will use the current value to fill it in. Accepts strings for the timezone and locale in the
-fourth and fifth parameters:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$today</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">();</span>            <span class="c1">// Uses current year, month, and day</span>
-<span class="nv">$anniversary</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2018</span><span class="p">);</span>  <span class="c1">// Uses current month and day</span>
-<span class="nv">$date</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+</section>
+<section id="createfromdate">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">createFromDate()</a><a class="headerlink" href="#createfromdate" title="此标题的永久链接"></a></h3>
+<p>给定 <strong>年</strong>、<strong>月</strong>、<strong>日</strong> 的独立输入，将返回新实例。如果未提供任何参数，将使用当前年、月、日。第四个和第五个参数接受时区和区域设置的字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$today</span>       <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">();</span>     <span class="c1">// Uses current year, month, and day</span>
+<span class="nv">$anniversary</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2018</span><span class="p">);</span> <span class="c1">// Uses current month and day</span>
+<span class="nv">$date</span>        <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="createfromtime">
-<h3><a class="toc-backref" href="#id10">createFromTime()</a><a class="headerlink" href="#createfromtime" title="永久链接至标题">¶</a></h3>
-<p>Like <strong>createFromDate</strong> except it is only concerned with the <strong>hours</strong>, <strong>minutes</strong>, and <strong>seconds</strong>. Uses the
-current day for the date portion of the Time instance. Accepts strings for the timezone and locale in the
-fourth and fifth parameters:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$lunch</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromTime</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>       <span class="c1">// 11:30 am today</span>
-<span class="nv">$dinner</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromTime</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mo">00</span><span class="p">,</span> <span class="mo">00</span><span class="p">)</span>  <span class="c1">// 6:00 pm today</span>
-<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromTime</span><span class="p">(</span><span class="nv">$hour</span><span class="p">,</span> <span class="nv">$minutes</span><span class="p">,</span> <span class="nv">$seconds</span><span class="p">,</span> <span class="nv">$timezone</span><span class="p">,</span> <span class="nv">$locale</span><span class="p">);</span>
+</section>
+<section id="createfromtime">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">createFromTime()</a><a class="headerlink" href="#createfromtime" title="此标题的永久链接"></a></h3>
+<p>类似于 <code class="docutils literal notranslate"><span class="pre">createFromDate()</span></code>，但仅关注 <strong>小时</strong>、<strong>分钟</strong> 和 <strong>秒</strong>。使用当前日期作为 Time 实例的日期部分。第四个和第五个参数接受时区和区域设置的字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$lunch</span>  <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromTime</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>     <span class="c1">// 11:30 am today</span>
+<span class="nv">$dinner</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromTime</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mo">00</span><span class="p">,</span> <span class="mo">00</span><span class="p">);</span> <span class="c1">// 6:00 pm today</span>
+<span class="nv">$time</span>   <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromTime</span><span class="p">(</span><span class="nv">$hour</span><span class="p">,</span> <span class="nv">$minutes</span><span class="p">,</span> <span class="nv">$seconds</span><span class="p">,</span> <span class="nv">$timezone</span><span class="p">,</span> <span class="nv">$locale</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="create">
-<h3><a class="toc-backref" href="#id11">create()</a><a class="headerlink" href="#create" title="永久链接至标题">¶</a></h3>
-<p>A combination of the previous two methods, takes <strong>year</strong>, <strong>month</strong>, <strong>day</strong>, <strong>hour</strong>, <strong>minutes</strong>, and <strong>seconds</strong>
-as separate parameters. Any value not provided will use the current date and time to determine. Accepts strings for the
-timezone and locale in the fourth and fifth parameters:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$month</span><span class="p">,</span> <span class="nv">$day</span><span class="p">,</span> <span class="nv">$hour</span><span class="p">,</span> <span class="nv">$minutes</span><span class="p">,</span> <span class="nv">$seconds</span><span class="p">,</span> <span class="nv">$timezone</span><span class="p">,</span> <span class="nv">$locale</span><span class="p">);</span>
+</section>
+<section id="create">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">create()</a><a class="headerlink" href="#create" title="此标题的永久链接"></a></h3>
+<p>前两个方法的组合，将 <strong>年</strong>、<strong>月</strong>、<strong>日</strong>、<strong>小时</strong>、<strong>分钟</strong> 和 <strong>秒</strong> 作为独立参数。任何未提供的值将使用当前日期和时间。第四个和第五个参数接受时区和区域设置的字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$month</span><span class="p">,</span> <span class="nv">$day</span><span class="p">,</span> <span class="nv">$hour</span><span class="p">,</span> <span class="nv">$minutes</span><span class="p">,</span> <span class="nv">$seconds</span><span class="p">,</span> <span class="nv">$timezone</span><span class="p">,</span> <span class="nv">$locale</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="createfromformat">
-<h3><a class="toc-backref" href="#id12">createFromFormat()</a><a class="headerlink" href="#createfromformat" title="永久链接至标题">¶</a></h3>
-<p>This is a replacement for DateTime's method of the same name. This allows the timezone to be set at the same time,
-and returns a <strong>Time</strong> instance, instead of DateTime:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s1">&#39;j-M-Y&#39;</span><span class="p">,</span> <span class="s1">&#39;15-Feb-2009&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+</section>
+<section id="createfromformat">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">createFromFormat()</a><a class="headerlink" href="#createfromformat" title="此标题的永久链接"></a></h3>
+<p>这是 DateTimeImmutable 同名方法的替代方法。允许同时设置时区，并返回 <code class="docutils literal notranslate"><span class="pre">Time</span></code> 实例而非 DateTimeImmutable：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s1">&#39;j-M-Y&#39;</span><span class="p">,</span> <span class="s1">&#39;15-Feb-2009&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="createfromtimestamp">
-<h3><a class="toc-backref" href="#id13">createFromTimestamp()</a><a class="headerlink" href="#createfromtimestamp" title="永久链接至标题">¶</a></h3>
-<p>This method takes a UNIX timestamp and, optionally, the timezone and locale, to create a new Time instance:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromTimestamp</span><span class="p">(</span><span class="mi">1501821586</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+</section>
+<section id="createfromtimestamp">
+<span id="time-createfromtimestamp"></span><h3><a class="toc-backref" href="#id21" role="doc-backlink">createFromTimestamp()</a><a class="headerlink" href="#createfromtimestamp" title="此标题的永久链接"></a></h3>
+<p>此方法接受 UNIX 时间戳，并可选择时区和区域设置来创建新的 Time 实例：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromTimestamp</span><span class="p">(</span><span class="mi">1501821586</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>如果未显式传递时区，则返回具有 <strong>UTC</strong> 的 Time 实例。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>我们建议始终使用 2 个参数调用 <code class="docutils literal notranslate"><span class="pre">createFromTimestamp()</span></code> （即显式传递时区），除非使用 UTC 作为默认时区。</p>
 </div>
-<div class="section" id="instance">
-<h3><a class="toc-backref" href="#id14">instance()</a><a class="headerlink" href="#instance" title="永久链接至标题">¶</a></h3>
-<p>When working with other libraries that provide a DateTime instance, you can use this method to convert that
-to a Time instance, optionally setting the locale. The timezone will be automatically determined from the DateTime
-instance passed in:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$dt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">);</span>
-<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$dt</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在 v4.4.6 到 v4.6.0 之前，当未指定时区时，此方法返回具有默认时区的 Time 实例。</p>
+</div>
+</section>
+<section id="createfrominstance">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">createFromInstance()</a><a class="headerlink" href="#createfrominstance" title="此标题的永久链接"></a></h3>
+<p>当处理其他提供 DateTime 实例的库时，可以使用此方法将其转换为 Time 实例，并可选择设置区域设置。时区将自动从传入的 DateTime 实例中确定：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$dt</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">);</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromInstance</span><span class="p">(</span><span class="nv">$dt</span><span class="p">,</span> <span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="todatetime">
-<h3><a class="toc-backref" href="#id15">toDateTime()</a><a class="headerlink" href="#todatetime" title="永久链接至标题">¶</a></h3>
-<p>While not an instantiator, this method is the opposite of the <strong>instance</strong> method, allowing you to convert a Time
-instance into a DateTime instance. This preserves the timezone setting, but loses the locale, since DateTime is
-not aware of locales:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$datetime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">toDateTime</span><span class="p">();</span>
+</section>
+<section id="todatetime">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">toDateTime()</a><a class="headerlink" href="#todatetime" title="此标题的永久链接"></a></h3>
+<p>虽然不是实例化方法，但此方法是 <strong>instance</strong> 方法的反向操作，允许将 Time 实例转换为 DateTime 实例。这会保留时区设置，但丢失区域设置，因为 DateTime 不感知区域：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$datetime</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">toDateTime</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="displaying-the-value">
-<h2><a class="toc-backref" href="#id16">Displaying the Value</a><a class="headerlink" href="#displaying-the-value" title="永久链接至标题">¶</a></h2>
-<p>Since the Time class extends DateTime, you get all of the output methods that provides, including the format() method.
-However, the DateTime methods do not provide a localize result. The Time class does provide a number of helper methods
-to display localized versions of the value, though.</p>
-<div class="section" id="tolocalizedstring">
-<h3><a class="toc-backref" href="#id17">toLocalizedString()</a><a class="headerlink" href="#tolocalizedstring" title="永久链接至标题">¶</a></h3>
-<p>This is the localized version of DateTime's format() method. Instead of using the values you might be familiar with, though,
-you must use values acceptable to the <a class="reference external" href="http://php.net/manual/en/class.intldateformatter.php">IntlDateFormatter</a> class.
-A full listing of values can be found <a class="reference external" href="http://www.icu-project.org/apiref/icu4c/classSimpleDateFormat.html#details">here</a>.</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd>$time = Time::parse('March 9, 2016 12:00:00', 'America/Chicago');
-echo $time-&gt;toLocalizedString('MMM d, yyyy');   // March 9, 2016</dd>
-</dl>
-</div>
-<div class="section" id="todatetimestring">
-<h3><a class="toc-backref" href="#id18">toDateTimeString()</a><a class="headerlink" href="#todatetimestring" title="永久链接至标题">¶</a></h3>
-<p>This is the first of three helper methods to work with the IntlDateFormatter without having to remember their values.
-This will return a string formatted as you would commonly use for datetime columns in a database (Y-m-d H:i:s):</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span>     <span class="c1">// 2016-03-09 12:00:00</span>
+</section>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">显示值</a><a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<p>由于 Time 类继承自 DateTimeImmutable，你可以使用其提供的所有输出方法，包括 <code class="docutils literal notranslate"><span class="pre">format()</span></code> 方法。但是 DateTimeImmutable 方法不提供本地化结果。Time 类提供了许多辅助方法来显示值的本地化版本。</p>
+<section id="tolocalizedstring">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">toLocalizedString()</a><a class="headerlink" href="#tolocalizedstring" title="此标题的永久链接"></a></h3>
+<p>这是 DateTimeImmutable 的 <code class="docutils literal notranslate"><span class="pre">format()</span></code> 方法的本地化版本。不过，你必须使用 <a class="reference external" href="https://www.php.net/manual/zh/class.intldateformatter.php">IntlDateFormatter</a> 类可接受的值，而不是你可能熟悉的格式值。完整值列表可在此处找到。</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="c1">// Locale: en</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toLocalizedString</span><span class="p">(</span><span class="s1">&#39;MMM d, yyyy&#39;</span><span class="p">);</span> <span class="c1">// March 9, 2016</span>
+
+<span class="c1">// Locale: fa</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toLocalizedString</span><span class="p">(</span><span class="s1">&#39;MMM d, yyyy&#39;</span><span class="p">);</span> <span class="c1">// مارس ۹, ۲۰۱۶</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="todatestring">
-<h3><a class="toc-backref" href="#id19">toDateString()</a><a class="headerlink" href="#todatestring" title="永久链接至标题">¶</a></h3>
-<p>Displays just the date portion of the Time:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span>     <span class="c1">// 2016-03-09</span>
+</section>
+<section id="todatetimestring">
+<span id="time-todatetimestring"></span><h3><a class="toc-backref" href="#id26" role="doc-backlink">toDateTimeString()</a><a class="headerlink" href="#todatetimestring" title="此标题的永久链接"></a></h3>
+<p>这是三个辅助方法中的第一个，用于使用 <a class="reference external" href="https://www.php.net/manual/zh/class.intldateformatter.php">IntlDateFormatter</a> 而无需记住其值。这将返回格式为 (<code class="docutils literal notranslate"><span class="pre">Y-m-d</span> <span class="pre">H:i:s</span></code>) 的本地化字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="c1">// Locale: en</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span> <span class="c1">// 2016-03-09 12:00:00</span>
+
+<span class="c1">// Locale: fa</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span> <span class="c1">// ۲۰۱۶-۰۳-۰۹ ۱۲:۰۰:۰۰</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="totimestring">
-<h3><a class="toc-backref" href="#id20">toTimeString()</a><a class="headerlink" href="#totimestring" title="永久链接至标题">¶</a></h3>
-<p>Displays just the time portion of the value:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toTimeString</span><span class="p">();</span>     <span class="c1">// 12:00:00</span>
+</section>
+<section id="todatestring">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">toDateString()</a><a class="headerlink" href="#todatestring" title="此标题的永久链接"></a></h3>
+<p>仅显示值的本地化日期部分：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="c1">// Locale: en</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateString</span><span class="p">();</span> <span class="c1">// 2016-03-09</span>
+
+<span class="c1">// Locale: fa</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateString</span><span class="p">();</span> <span class="c1">// ۲۰۱۶-۰۳-۰۹</span>
 </pre></div>
 </div>
+</section>
+<section id="totimestring">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">toTimeString()</a><a class="headerlink" href="#totimestring" title="此标题的永久链接"></a></h3>
+<p>仅显示值的本地化时间部分：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="c1">// Locale: en</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toTimeString</span><span class="p">();</span> <span class="c1">// 12:00:00</span>
+
+<span class="c1">// Locale: fa</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toTimeString</span><span class="p">();</span> <span class="c1">// ۱۲:۰۰:۰۰</span>
+</pre></div>
 </div>
-<div class="section" id="humanize">
-<h3><a class="toc-backref" href="#id21">humanize()</a><a class="headerlink" href="#humanize" title="永久链接至标题">¶</a></h3>
-<p>This methods returns a string that displays the difference between the current date/time and the instance in a
-human readable format that is geared towards being easily understood. It can create strings like '3 hours ago',
-'in 1 month', etc:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// Assume current time is: March 10, 2017 (America/Chicago)</span>
+</section>
+<section id="humanize">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">humanize()</a><a class="headerlink" href="#humanize" title="此标题的永久链接"></a></h3>
+<p>此方法返回一个字符串，以易于理解的人类可读格式显示当前日期/时间与实例之间的差异。可以生成如 “3 hours ago”、”in 1 month” 等字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="c1">// Assume current time is: March 10, 2017 (America/Chicago)</span>
 <span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">humanize</span><span class="p">();</span>     <span class="c1">// 1 year ago</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">humanize</span><span class="p">();</span> <span class="c1">// 1 year ago</span>
 </pre></div>
 </div>
-<p>The exact time displayed is determined in the following manner:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="48%" />
-<col width="52%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Time difference</th>
-<th class="head">Result</th>
+<p>显示的确切时间由以下方式确定：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>时间差</p></th>
+<th class="head"><p>结果</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>$time &gt; 1 year &amp;&amp; &lt; 2 years</td>
-<td>in 1 year / 1 year ago</td>
+<tbody>
+<tr class="row-even"><td><p>1 年 &lt; $time &lt; 2 年</p></td>
+<td><p>in 1 year / 1 year ago</p></td>
 </tr>
-<tr class="row-odd"><td>$time &gt; 1 month &amp;&amp; &lt; 1 year</td>
-<td>in 6 months / 6 months ago</td>
+<tr class="row-odd"><td><p>1 个月 &lt; $time &lt; 1 年</p></td>
+<td><p>in 6 months / 6 months ago</p></td>
 </tr>
-<tr class="row-even"><td>$time &gt; 7 days &amp;&amp; &lt; 1 month</td>
-<td>in 3 weeks / 3 weeks ago</td>
+<tr class="row-even"><td><p>7 天 &lt; $time &lt; 1 个月</p></td>
+<td><p>in 3 weeks / 3 weeks ago</p></td>
 </tr>
-<tr class="row-odd"><td>$time &gt; today &amp;&amp; &lt; 7 days</td>
-<td>in 4 days / 4 days ago</td>
+<tr class="row-odd"><td><p>今天 &lt; $time &lt; 7 天</p></td>
+<td><p>in 4 days / 4 days ago</p></td>
 </tr>
-<tr class="row-even"><td>$time == tomorrow / yesterday</td>
-<td>Tomorrow / Yesterday</td>
+<tr class="row-even"><td><p>$time == 昨天 / 明天</p></td>
+<td><p>Tomorrow / Yesterday</p></td>
 </tr>
-<tr class="row-odd"><td>$time &gt; 59 minutes &amp;&amp; &lt; 1 day</td>
-<td>1:37pm</td>
+<tr class="row-odd"><td><p>59 分钟 &lt; $time &lt; 1 天</p></td>
+<td><p>in 2 hours / 2 hours ago</p></td>
 </tr>
-<tr class="row-even"><td>$time &gt; now &amp;&amp; &lt; 1 hour</td>
-<td>in 35 minutes / 35 minutes ago</td>
+<tr class="row-even"><td><p>现在 &lt; $time &lt; 1 小时</p></td>
+<td><p>in 35 minutes / 35 minutes ago</p></td>
 </tr>
-<tr class="row-odd"><td>$time == now</td>
-<td>Now</td>
+<tr class="row-odd"><td><p>$time == 现在</p></td>
+<td><p>Now</p></td>
 </tr>
 </tbody>
 </table>
-<p>The exact language used is controlled through the language file, Time.php.</p>
-</div>
-</div>
-<div class="section" id="working-with-individual-values">
-<h2><a class="toc-backref" href="#id22">Working with Individual Values</a><a class="headerlink" href="#working-with-individual-values" title="永久链接至标题">¶</a></h2>
-<p>The Time object provides a number of methods to allow to get and set individual items, like the year, month, hour, etc,
-of an existing instance. All of the values retrieved through the following methods will be fully localized and respect
-the locale that the Time instance was created with.</p>
-<p>All of the following <cite>getX</cite> and <cite>setX</cite> methods can also be used as if they were a class property. So, any calls to methods
-like <cite>getYear</cite> can also be accessed through <cite>$time-&gt;year</cite>, and so on.</p>
-<p>The following basic getters exist:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;August 12, 2016 4:15:23pm&#39;</span><span class="p">);</span>
+<p>结果字符串来自语言文件 <strong>system/Language/en/Time.php</strong>。如需覆盖，请创建 <strong>app/Language/{locale}/Time.php</strong>。</p>
+</section>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">处理独立值</a><a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
+<p>Time 对象提供多个方法用于获取和设置现有实例的独立项（如年、月、小时等）。通过以下方法获取的所有值都将完全本地化，并尊重创建 Time 实例时使用的区域设置。</p>
+<p>所有以下 <code class="docutils literal notranslate"><span class="pre">getX()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">setX()</span></code> 方法也可以像类属性一样使用。因此，像 <code class="docutils literal notranslate"><span class="pre">getYear()</span></code> 这样的方法调用也可以通过 <code class="docutils literal notranslate"><span class="pre">$time-&gt;year</span></code> 等方式访问。</p>
+<section id="getter">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Getter 方法</a><a class="headerlink" href="#getter" title="此标题的永久链接"></a></h3>
+<p>存在以下基本 getter 方法：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getYear</span><span class="p">();</span>      <span class="c1">// 2016</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getMonth</span><span class="p">();</span>     <span class="c1">// 8</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getDay</span><span class="p">();</span>       <span class="c1">// 12</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getHour</span><span class="p">();</span>      <span class="c1">// 16</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getMinute</span><span class="p">();</span>    <span class="c1">// 15</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getSecond</span><span class="p">();</span>    <span class="c1">// 23</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">year</span><span class="p">;</span>           <span class="c1">// 2016</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">month</span><span class="p">;</span>          <span class="c1">// 8</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">day</span><span class="p">;</span>            <span class="c1">// 12</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">hour</span><span class="p">;</span>           <span class="c1">// 16</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">minute</span><span class="p">;</span>         <span class="c1">// 15</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">second</span><span class="p">;</span>         <span class="c1">// 23</span>
-</pre></div>
-</div>
-<p>In addition to these, a number of methods exist to provide additional information about the date:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;August 12, 2016 4:15:23pm&#39;</span><span class="p">);</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;August 12, 2016 4:15:23pm&#39;</span><span class="p">);</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getDayOfWeek</span><span class="p">();</span>     <span class="c1">// 6 - but may vary based on locale&#39;s starting day of the week</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getDayOfYear</span><span class="p">();</span>     <span class="c1">// 225</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getWeekOfMonth</span><span class="p">();</span>   <span class="c1">// 2</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getWeekOfYear</span><span class="p">();</span>    <span class="c1">// 33</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getTimestamp</span><span class="p">();</span>     <span class="c1">// 1471018523 - UNIX timestamp</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getQuarter</span><span class="p">();</span>       <span class="c1">// 3</span>
+<span class="c1">// The output may vary based on locale.</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getYear</span><span class="p">();</span>   <span class="c1">// &#39;2016&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getMonth</span><span class="p">();</span>  <span class="c1">// &#39;8&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getDay</span><span class="p">();</span>    <span class="c1">// &#39;12&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getHour</span><span class="p">();</span>   <span class="c1">// &#39;16&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getMinute</span><span class="p">();</span> <span class="c1">// &#39;15&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getSecond</span><span class="p">();</span> <span class="c1">// &#39;23&#39;</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">dayOfWeek</span><span class="p">;</span>          <span class="c1">// 6</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">dayOfYear</span><span class="p">;</span>          <span class="c1">// 225</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">weekOfMonth</span><span class="p">;</span>        <span class="c1">// 2</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">weekOfYear</span><span class="p">;</span>         <span class="c1">// 33</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">timestamp</span><span class="p">;</span>          <span class="c1">// 1471018523</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">quarter</span><span class="p">;</span>            <span class="c1">// 3</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">year</span><span class="p">;</span>   <span class="c1">// &#39;2016&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">month</span><span class="p">;</span>  <span class="c1">// &#39;8&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">day</span><span class="p">;</span>    <span class="c1">// &#39;12&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">hour</span><span class="p">;</span>   <span class="c1">// &#39;16&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">minute</span><span class="p">;</span> <span class="c1">// &#39;15&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">second</span><span class="p">;</span> <span class="c1">// &#39;23&#39;</span>
 </pre></div>
 </div>
-<div class="section" id="getage">
-<h3><a class="toc-backref" href="#id23">getAge()</a><a class="headerlink" href="#getage" title="永久链接至标题">¶</a></h3>
-<p>Returns the age, in years, of between the Time's instance and the current time. Perfect for checking
-the age of someone based on their birthday:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;5 years ago&#39;</span><span class="p">);</span>
+<p>此外，还有一些方法可提供有关日期的额外信息：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getAge</span><span class="p">();</span>   <span class="c1">// 5</span>
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">;</span>        <span class="c1">// 5</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;August 12, 2016 4:15:23pm&#39;</span><span class="p">);</span>
+
+<span class="c1">// The output may vary based on locale.</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getDayOfWeek</span><span class="p">();</span>   <span class="c1">// &#39;6&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getDayOfYear</span><span class="p">();</span>   <span class="c1">// &#39;225&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getWeekOfMonth</span><span class="p">();</span> <span class="c1">// &#39;2&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getWeekOfYear</span><span class="p">();</span>  <span class="c1">// &#39;33&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getTimestamp</span><span class="p">();</span>   <span class="c1">// 1471018523 - UNIX timestamp (locale independent)</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getQuarter</span><span class="p">();</span>     <span class="c1">// &#39;3&#39;</span>
+
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">dayOfWeek</span><span class="p">;</span>   <span class="c1">// &#39;6&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">dayOfYear</span><span class="p">;</span>   <span class="c1">// &#39;225&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">weekOfMonth</span><span class="p">;</span> <span class="c1">// &#39;2&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">weekOfYear</span><span class="p">;</span>  <span class="c1">// &#39;33&#39;</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">timestamp</span><span class="p">;</span>   <span class="c1">// 1471018523</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">quarter</span><span class="p">;</span>     <span class="c1">// &#39;3&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="getdst">
-<h3><a class="toc-backref" href="#id24">getDST()</a><a class="headerlink" href="#getdst" title="永久链接至标题">¶</a></h3>
-<p>Returns boolean true/false based on whether the Time instance is currently observing Daylight Savings Time:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getDst</span><span class="p">();</span>     <span class="c1">// false</span>
-<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">dst</span><span class="p">;</span>     <span class="c1">// true</span>
+<section id="getage">
+<h4>getAge()<a class="headerlink" href="#getage" title="此标题的永久链接"></a></h4>
+<p>返回 Time 实例与当前时间之间的年龄（以年为单位）。非常适合根据生日检查年龄：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;5 years ago&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getAge</span><span class="p">();</span> <span class="c1">// 5</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">;</span>      <span class="c1">// 5</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="getlocal">
-<h3><a class="toc-backref" href="#id25">getLocal()</a><a class="headerlink" href="#getlocal" title="永久链接至标题">¶</a></h3>
-<p>Returns boolean true if the Time instance is in the same timezone as the application is currently running in:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getLocal</span><span class="p">();</span>       <span class="c1">// true</span>
-<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">);</span>    <span class="c1">// false</span>
+</section>
+<section id="getdst">
+<h4>getDST()<a class="headerlink" href="#getdst" title="此标题的永久链接"></a></h4>
+<p>根据 Time 实例当前是否处于夏令时返回布尔值 true/false：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getDst</span><span class="p">();</span> <span class="c1">// false</span>
+<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">dst</span><span class="p">;</span>      <span class="c1">// true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="getutc">
-<h3><a class="toc-backref" href="#id26">getUtc()</a><a class="headerlink" href="#getutc" title="永久链接至标题">¶</a></h3>
-<p>Returns boolean true if the Time instance is in UTC time:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getUtc</span><span class="p">();</span>    <span class="c1">// false</span>
-<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">utc</span><span class="p">;</span>                     <span class="c1">// true</span>
+</section>
+<section id="getlocal">
+<h4>getLocal()<a class="headerlink" href="#getlocal" title="此标题的永久链接"></a></h4>
+<p>如果 Time 实例与时区与应用程序当前运行时区相同，则返回布尔值 true：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getLocal</span><span class="p">();</span>           <span class="c1">// true</span>
+<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">local</span><span class="p">;</span> <span class="c1">// false</span>
 </pre></div>
 </div>
+</section>
+<section id="getutc">
+<h4>getUtc()<a class="headerlink" href="#getutc" title="此标题的永久链接"></a></h4>
+<p>如果 Time 实例处于 UTC 时间，则返回布尔值 true：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getUtc</span><span class="p">();</span> <span class="c1">// false</span>
+<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">utc</span><span class="p">;</span>                  <span class="c1">// true</span>
+</pre></div>
 </div>
-<div class="section" id="gettimezone">
-<h3><a class="toc-backref" href="#id27">getTimezone()</a><a class="headerlink" href="#gettimezone" title="永久链接至标题">¶</a></h3>
-<p>Returns a new <a class="reference external" href="http://php.net/manual/en/class.datetimezone.php">DateTimeZone</a> object set the timezone of the Time
-instance:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$tz</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getTimezone</span><span class="p">();</span>
+</section>
+<section id="gettimezone">
+<h4>getTimezone()<a class="headerlink" href="#gettimezone" title="此标题的永久链接"></a></h4>
+<p>返回一个新的 <a class="reference external" href="https://www.php.net/manual/zh/class.datetimezone.php">DateTimeZone</a> 对象，该对象设置为 Time 实例的时区：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$tz</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getTimezone</span><span class="p">();</span>
 <span class="nv">$tz</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">timezone</span><span class="p">;</span>
 
 <span class="k">echo</span> <span class="nv">$tz</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
 <span class="k">echo</span> <span class="nv">$tz</span><span class="o">-&gt;</span><span class="na">getOffset</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="gettimezonename">
-<h3><a class="toc-backref" href="#id28">getTimezoneName()</a><a class="headerlink" href="#gettimezonename" title="永久链接至标题">¶</a></h3>
-<p>Returns the full <a class="reference external" href="http://php.net/manual/en/timezones.php">timezone string</a> of the Time instance:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getTimezoneName</span><span class="p">();</span>   <span class="c1">// America/Chicago</span>
-<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">timezoneName</span><span class="p">;</span>          <span class="c1">// Europe/London</span>
+</section>
+<section id="gettimezonename">
+<h4>getTimezoneName()<a class="headerlink" href="#gettimezonename" title="此标题的永久链接"></a></h4>
+<p>返回 Time 实例的完整 <a class="reference external" href="https://www.php.net/manual/zh/timezones.php">时区字符串</a>：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;America/Chicago&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getTimezoneName</span><span class="p">();</span> <span class="c1">// America/Chicago</span>
+<span class="k">echo</span> <span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">(</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">timezoneName</span><span class="p">;</span>        <span class="c1">// Europe/London</span>
 </pre></div>
 </div>
-<div class="section" id="setters">
-<h4><a class="toc-backref" href="#id29">Setters</a><a class="headerlink" href="#setters" title="永久链接至标题">¶</a></h4>
-<p>The following basic setters exist. If any of the values set are out of range, an <code class="docutils literal"><span class="pre">InvalidArgumentExeption</span></code> will be
-thrown.</p>
+</section>
+</section>
+<section id="setter">
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">Setter 方法</a><a class="headerlink" href="#setter" title="此标题的永久链接"></a></h3>
+<p>存在以下基本 setter 方法。如果设置的任何值超出范围，将抛出 <code class="docutils literal notranslate"><span class="pre">InvalidArgumentExeption</span></code>。</p>
 <div class="admonition note">
-<p class="first admonition-title">注解</p>
-<p class="last">All setters will return a new Time instance, leaving the original instance untouched.</p>
+<p class="admonition-title">备注</p>
+<p>所有 setter 方法将返回新的 Time 实例，原始实例保持不变。</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">注解</p>
-<p class="last">All setters will throw an InvalidArgumentException if the value is out of range.</p>
+<p class="admonition-title">备注</p>
+<p>所有 setter 方法在值超出范围时将抛出 InvalidArgumentException。</p>
 </div>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setYear</span><span class="p">(</span><span class="mi">2017</span><span class="p">);</span>
-<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setMonthNumber</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>           <span class="c1">// April</span>
-<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setMonthLongName</span><span class="p">(</span><span class="s1">&#39;April&#39;</span><span class="p">);</span>
-<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setMonthShortName</span><span class="p">(</span><span class="s1">&#39;Feb&#39;</span><span class="p">);</span>    <span class="c1">// February</span>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setYear</span><span class="p">(</span><span class="mi">2017</span><span class="p">);</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setMonth</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>       <span class="c1">// April</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setMonth</span><span class="p">(</span><span class="s1">&#39;April&#39;</span><span class="p">);</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setMonth</span><span class="p">(</span><span class="s1">&#39;Feb&#39;</span><span class="p">);</span>   <span class="c1">// February</span>
 <span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setDay</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
-<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setHour</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>                 <span class="c1">// 2:00 pm</span>
+<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setHour</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>       <span class="c1">// 2:00 pm</span>
 <span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setMinute</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
 <span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setSecond</span><span class="p">(</span><span class="mi">54</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="settimezone">
-<h3><a class="toc-backref" href="#id30">setTimezone()</a><a class="headerlink" href="#settimezone" title="永久链接至标题">¶</a></h3>
-<p>Converts the time from it's current timezone into the new one:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;May 10, 2017&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
-<span class="nv">$time2</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setTimezone</span><span class="p">(</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">);</span>           <span class="c1">// Returns new instance converted to new timezone</span>
+<section id="settimezone">
+<h4>setTimezone()<a class="headerlink" href="#settimezone" title="此标题的永久链接"></a></h4>
+<p>将时间从当前时区转换到新时区：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">timezoneName</span><span class="p">;</span>   <span class="c1">// American/Chicago</span>
-<span class="k">echo</span> <span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">timezoneName</span><span class="p">;</span>  <span class="c1">// Europe/London</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time</span>  <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;13 May 2020 10:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="nv">$time2</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setTimezone</span><span class="p">(</span><span class="s1">&#39;Europe/London&#39;</span><span class="p">);</span> <span class="c1">// Returns new instance converted to new timezone</span>
+
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">getTimezoneName</span><span class="p">();</span>  <span class="c1">// American/Chicago</span>
+<span class="k">echo</span> <span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">getTimezoneName</span><span class="p">();</span> <span class="c1">// Europe/London</span>
+
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span>  <span class="c1">// 2020-05-13 10:00:00</span>
+<span class="k">echo</span> <span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span> <span class="c1">// 2020-05-13 18:00:00</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="settimestamp">
-<h3><a class="toc-backref" href="#id31">setTimestamp()</a><a class="headerlink" href="#settimestamp" title="永久链接至标题">¶</a></h3>
-<p>Returns a new instance with the date set to the new timestamp:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;May 10, 2017&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+</section>
+<section id="settimestamp">
+<h4>setTimestamp()<a class="headerlink" href="#settimestamp" title="此标题的永久链接"></a></h4>
+<p>返回日期设置为新时间戳的新实例：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="c1">// The Application Timezone is &quot;America/Chicago&quot;.</span>
+
+<span class="nv">$time</span>  <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;May 10, 2017&#39;</span><span class="p">);</span>
 <span class="nv">$time2</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">setTimestamp</span><span class="p">(</span><span class="nb">strtotime</span><span class="p">(</span><span class="s1">&#39;April 1, 2017&#39;</span><span class="p">));</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span>     <span class="c1">// 2017-05-10 00:00:00</span>
-<span class="k">echo</span> <span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span>     <span class="c1">// 2017-04-01 00:00:00</span>
+<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span>  <span class="c1">// 2017-05-10 00:00:00</span>
+<span class="k">echo</span> <span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">toDateTimeString</span><span class="p">();</span> <span class="c1">// 2017-04-01 00:00:00</span>
 </pre></div>
 </div>
-<div class="section" id="modifying-the-value">
-<h4><a class="toc-backref" href="#id32">Modifying the Value</a><a class="headerlink" href="#modifying-the-value" title="永久链接至标题">¶</a></h4>
-<p>The following methods allow you to modify the date by adding or subtracting values to the current Time. This will not
-modify the existing Time instance, but will return a new instance.</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">addSeconds</span><span class="p">(</span><span class="mi">23</span><span class="p">);</span>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在 v4.6.0 之前，由于存在 bug，此方法可能返回不正确的日期/时间。详情参见 <a class="reference internal" href="../installation/upgrade_460.html#upgrade-460-time-set-timestamp"><span class="std std-ref">升级指南</span></a>。</p>
+</div>
+</section>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">修改值</a><a class="headerlink" href="#id7" title="此标题的永久链接"></a></h3>
+<p>以下方法允许你通过向当前 Time 添加或减去值来修改日期。这不会修改现有 Time 实例，而是返回新实例。</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">addSeconds</span><span class="p">(</span><span class="mi">23</span><span class="p">);</span>
 <span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">addMinutes</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 <span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">addHours</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
 <span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">addDays</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
@@ -843,220 +840,246 @@ modify the existing Time instance, but will return a new instance.</p>
 <span class="nv">$time</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">subYears</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="comparing-two-times">
-<h4><a class="toc-backref" href="#id33">Comparing Two Times</a><a class="headerlink" href="#comparing-two-times" title="永久链接至标题">¶</a></h4>
-<p>The following methods allow you to compare one Time instance with another. All comparisons are first converted to UTC
-before comparisons are done, to ensure that different timezones respond correctly.</p>
-</div>
-</div>
-<div class="section" id="equals">
-<h3><a class="toc-backref" href="#id34">equals()</a><a class="headerlink" href="#equals" title="永久链接至标题">¶</a></h3>
-<p>Determines if the datetime passed in is equal to the current instance. Equal in this case means that they represent the
-same moment in time, and are not required to be in the same timezone, as both times are converted to UTC and compared
-that way:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time1</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">比较两个时间</a><a class="headerlink" href="#id8" title="此标题的永久链接"></a></h3>
+<p>以下方法允许你将一个 Time 实例与另一个进行比较。所有比较在转换到 UTC 后进行，以确保不同时区能正确响应。</p>
+<section id="equals">
+<h4>equals()<a class="headerlink" href="#equals" title="此标题的永久链接"></a></h4>
+<p>确定传入的日期时间是否等于当前实例。此处的”相等”意味着它们代表同一时刻，不要求处于相同时区，因为两个时间都会转换为 UTC 进行比较：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time1</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 <span class="nv">$time2</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 11, 2017 03:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe/London&#39;</span><span class="p">);</span>
 
-<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="nv">$time2</span><span class="p">);</span>    <span class="c1">// true</span>
+<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="nv">$time2</span><span class="p">);</span> <span class="c1">// true</span>
 </pre></div>
 </div>
-<p>The value being tested against can be a Time instance, a DateTime instance, or a string with the full date time in
-a manner that a new DateTime instance can understand. When passing a string as the first parameter, you can pass
-a timezone string in as the second parameter. If no timezone is given, the system default will be used:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="s1">&#39;January 11, 2017 03:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe/London&#39;</span><span class="p">);</span>  <span class="c1">// true</span>
+<p>被测试值可以是 Time 实例、DateTime 实例，或包含完整日期时间的字符串（需能被新 DateTime 实例理解）。当第一个参数传递字符串时，可以在第二个参数中传递时区字符串。如果未提供时区，将使用系统默认值：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="s1">&#39;January 11, 2017 03:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe/London&#39;</span><span class="p">);</span> <span class="c1">// true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="sameas">
-<h3><a class="toc-backref" href="#id35">sameAs()</a><a class="headerlink" href="#sameas" title="永久链接至标题">¶</a></h3>
-<p>This is identical to the <strong>equals</strong> method, except that it only returns true when the date, time, AND timezone are
-all identical:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time1</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+</section>
+<section id="sameas">
+<h4>sameAs()<a class="headerlink" href="#sameas" title="此标题的永久链接"></a></h4>
+<p>此方法与 <code class="docutils literal notranslate"><span class="pre">equals()</span></code> 相同，但仅当日期、时间和时区都完全相同时才返回 true：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time1</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 <span class="nv">$time2</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 11, 2017 03:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe/London&#39;</span><span class="p">);</span>
 
-<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">sameAs</span><span class="p">(</span><span class="nv">$time2</span><span class="p">);</span>    <span class="c1">// false</span>
-<span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">sameAs</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>    <span class="c1">// true</span>
+<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">sameAs</span><span class="p">(</span><span class="nv">$time2</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">sameAs</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span> <span class="c1">// true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="isbefore">
-<h3><a class="toc-backref" href="#id36">isBefore()</a><a class="headerlink" href="#isbefore" title="永久链接至标题">¶</a></h3>
-<p>Checks if the passed in time is before the the current instance. The comparison is done against the UTC versions of
-both times:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time1</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+</section>
+<section id="isbefore">
+<h4>isBefore()<a class="headerlink" href="#isbefore" title="此标题的永久链接"></a></h4>
+<p>检查传入时间是否早于当前实例。比较基于两个时间的 UTC 版本：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time1</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 <span class="nv">$time2</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 11, 2017 03:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 
-<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">isBefore</span><span class="p">(</span><span class="nv">$time2</span><span class="p">);</span>  <span class="c1">// true</span>
-<span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">isBefore</span><span class="p">(</span><span class="nv">$time1</span><span class="p">);</span>  <span class="c1">// false</span>
+<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">isBefore</span><span class="p">(</span><span class="nv">$time2</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">isBefore</span><span class="p">(</span><span class="nv">$time1</span><span class="p">);</span> <span class="c1">// false</span>
 </pre></div>
 </div>
-<p>The value being tested against can be a Time instance, a DateTime instance, or a string with the full date time in
-a manner that a new DateTime instance can understand. When passing a string as the first parameter, you can pass
-a timezone string in as the second parameter. If no timezone is given, the system default will be used:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">isBefore</span><span class="p">(</span><span class="s1">&#39;March 15, 2013&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>  <span class="c1">// false</span>
+<p>被测试值可以是 Time 实例、DateTime 实例，或包含完整日期时间的字符串（需能被新 DateTime 实例理解）。当第一个参数传递字符串时，可以在第二个参数中传递时区字符串。如果未提供时区，将使用系统默认值：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">isBefore</span><span class="p">(</span><span class="s1">&#39;March 15, 2013&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span> <span class="c1">// false</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="isafter">
-<h3><a class="toc-backref" href="#id37">isAfter()</a><a class="headerlink" href="#isafter" title="永久链接至标题">¶</a></h3>
-<p>Works exactly the same as <strong>isBefore()</strong> except checks if the time is after the time passed in:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time1</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+</section>
+<section id="isafter">
+<h4>isAfter()<a class="headerlink" href="#isafter" title="此标题的永久链接"></a></h4>
+<p>工作方式与 <code class="docutils literal notranslate"><span class="pre">isBefore()</span></code> 完全相同，但检查时间是否晚于传入时间：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time1</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 10, 2017 21:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 <span class="nv">$time2</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;January 11, 2017 03:50:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 
-<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">isAfter</span><span class="p">(</span><span class="nv">$time2</span><span class="p">);</span>  <span class="c1">// false</span>
-<span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">isAfter</span><span class="p">(</span><span class="nv">$time1</span><span class="p">);</span>  <span class="c1">// true</span>
+<span class="nv">$time1</span><span class="o">-&gt;</span><span class="na">isAfter</span><span class="p">(</span><span class="nv">$time2</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="nv">$time2</span><span class="o">-&gt;</span><span class="na">isAfter</span><span class="p">(</span><span class="nv">$time1</span><span class="p">);</span> <span class="c1">// true</span>
 </pre></div>
 </div>
-<div class="section" id="viewing-differences">
-<h4><a class="toc-backref" href="#id38">Viewing Differences</a><a class="headerlink" href="#viewing-differences" title="永久链接至标题">¶</a></h4>
-<p>To compare two Times directly, you would use the <strong>difference()</strong> method, which returns a <strong>CodeIgniterI18nTimeDifference</strong>
-instance. The first parameter is either a Time instance, a DateTime instance, or a string with the date/time. If
-a string is passed in the first parameter, the second parameter can be a timezone string:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 10, 2017&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+</section>
+</section>
+<section id="time-viewing-differences">
+<span id="id9"></span><h3><a class="toc-backref" href="#id35" role="doc-backlink">查看差异</a><a class="headerlink" href="#time-viewing-differences" title="此标题的永久链接"></a></h3>
+<p>要直接比较两个 Time 实例，可以使用 <code class="docutils literal notranslate"><span class="pre">difference()</span></code> 方法，该方法返回一个 <code class="docutils literal notranslate"><span class="pre">CodeIgniter\I18n\TimeDifference</span></code> 实例。</p>
+<p>第一个参数可以是 Time 实例、DateTime 实例或日期/时间字符串。如果第一个参数传递字符串，第二个参数可以是时区字符串：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 10, 2017&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 
 <span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">difference</span><span class="p">(</span><span class="nx">Time</span><span class="o">::</span><span class="na">now</span><span class="p">());</span>
-<span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">difference</span><span class="p">(</span><span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;July 4, 1975&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">difference</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;July 4, 1975&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">));</span>
 <span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">difference</span><span class="p">(</span><span class="s1">&#39;July 4, 1975 13:32:05&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Once you have the TimeDifference instance, you have several methods you can use to find information about the difference
-between the two times. The value returned will be negative if it was in the past, or positive if in the future from
-the original time:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$current</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 10, 2017&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<p>获得 TimeDifference 实例后，可以使用多个方法获取两个时间差异的信息。如果差异时间在过去，返回值为负；如果在未来则为正：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$current</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 10, 2017&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 <span class="nv">$test</span>    <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 10, 2010&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
 
 <span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$current</span><span class="o">-&gt;</span><span class="na">difference</span><span class="p">(</span><span class="nv">$test</span><span class="p">);</span>
 
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getYears</span><span class="p">();</span>     <span class="c1">// -7</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getMonths</span><span class="p">();</span>    <span class="c1">// -84</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getWeeks</span><span class="p">();</span>     <span class="c1">// -365</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getDays</span><span class="p">();</span>      <span class="c1">// -2557</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getHours</span><span class="p">();</span>     <span class="c1">// -61368</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getMinutes</span><span class="p">();</span>   <span class="c1">// -3682080</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getSeconds</span><span class="p">();</span>   <span class="c1">// -220924800</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getYears</span><span class="p">();</span>   <span class="c1">// -7</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getMonths</span><span class="p">();</span>  <span class="c1">// -84</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getWeeks</span><span class="p">();</span>   <span class="c1">// -365</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getDays</span><span class="p">();</span>    <span class="c1">// -2557</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getHours</span><span class="p">();</span>   <span class="c1">// -61368</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getMinutes</span><span class="p">();</span> <span class="c1">// -3682080</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getSeconds</span><span class="p">();</span> <span class="c1">// -220924800</span>
 </pre></div>
 </div>
-<p>You can use either <strong>getX()</strong> methods, or access the calculate values as if they were properties:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">years</span><span class="p">;</span>     <span class="c1">// -7</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">months</span><span class="p">;</span>    <span class="c1">// -84</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">weeks</span><span class="p">;</span>     <span class="c1">// -365</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">days</span><span class="p">;</span>      <span class="c1">// -2557</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">hours</span><span class="p">;</span>     <span class="c1">// -61368</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">minutes</span><span class="p">;</span>   <span class="c1">// -3682080</span>
-<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">seconds</span><span class="p">;</span>   <span class="c1">// -220924800</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#id39">humanize()</a><a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<p>Much like Time's humanize() method, this returns a string that displays the difference between the times in a
-human readable format that is geared towards being easily understood. It can create strings like '3 hours ago',
-'in 1 month', etc. The biggest differences are in how very recent dates are handled:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// Assume current time is: March 10, 2017 (America/Chicago)</span>
-<span class="nv">$time</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在 v4.4.7 之前，Time 始终在比较前将时区转换为 UTC。当包含因夏令时 (DST) 导致天数不同于 24 小时的情况时，可能导致意外结果。</p>
+<p>从 v4.4.7 开始，当比较处于相同时区的日期/时间时，直接进行比较而不转换为 UTC：</p>
+<blockquote>
+<div><div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">echo</span> <span class="nv">$time</span><span class="o">-&gt;</span><span class="na">humanize</span><span class="p">();</span>     <span class="c1">// 1 year ago</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="c1">// 31 Mar 2024 - Daylight Saving Time Starts</span>
+<span class="nv">$current</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;2024-03-31&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe/Madrid&#39;</span><span class="p">);</span>
+<span class="nv">$test</span>    <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;2024-04-01&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe/Madrid&#39;</span><span class="p">);</span>
+
+<span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$current</span><span class="o">-&gt;</span><span class="na">difference</span><span class="p">(</span><span class="nv">$test</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">getDays</span><span class="p">();</span>
+<span class="c1">// 0 in v4.4.6 or before</span>
+<span class="c1">// 1 in v4.4.7 or later</span>
 </pre></div>
 </div>
-<p>The exact time displayed is determined in the following manner:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="48%" />
-<col width="52%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Time difference</th>
-<th class="head">Result</th>
+</div></blockquote>
+</div>
+<p>你可以使用 <code class="docutils literal notranslate"><span class="pre">getX()</span></code> 方法，或像访问属性一样访问计算值：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">years</span><span class="p">;</span>   <span class="c1">// -7</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">months</span><span class="p">;</span>  <span class="c1">// -84</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">weeks</span><span class="p">;</span>   <span class="c1">// -365</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">days</span><span class="p">;</span>    <span class="c1">// -2557</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">hours</span><span class="p">;</span>   <span class="c1">// -61368</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">minutes</span><span class="p">;</span> <span class="c1">// -3682080</span>
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">seconds</span><span class="p">;</span> <span class="c1">// -220924800</span>
+</pre></div>
+</div>
+<section id="id10">
+<h4>humanize()<a class="headerlink" href="#id10" title="此标题的永久链接"></a></h4>
+<p>类似于 Time 的 <code class="docutils literal notranslate"><span class="pre">humanize()</span></code> 方法，此方法返回一个字符串，以人类可读格式显示时间差异，便于理解。可以生成如 “3 hours ago”、”in 1 month” 等字符串。主要区别在于处理最近日期的方式：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\I18n\Time</span><span class="p">;</span>
+
+<span class="nv">$current</span> <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 10, 2017&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+<span class="nv">$test</span>    <span class="o">=</span> <span class="nx">Time</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s1">&#39;March 9, 2016 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;America/Chicago&#39;</span><span class="p">);</span>
+
+<span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$current</span><span class="o">-&gt;</span><span class="na">difference</span><span class="p">(</span><span class="nv">$test</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">humanize</span><span class="p">();</span> <span class="c1">// 1 year ago</span>
+</pre></div>
+</div>
+<p>显示的确切时间由以下方式确定：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>时间差</p></th>
+<th class="head"><p>结果</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>$time &gt; 1 year &amp;&amp; &lt; 2 years</td>
-<td>in 1 year / 1 year ago</td>
+<tbody>
+<tr class="row-even"><td><p>1 年 &lt; $time &lt; 2 年</p></td>
+<td><p>in 1 year / 1 year ago</p></td>
 </tr>
-<tr class="row-odd"><td>$time &gt; 1 month &amp;&amp; &lt; 1 year</td>
-<td>in 6 months / 6 months ago</td>
+<tr class="row-odd"><td><p>1 个月 &lt; $time &lt; 1 年</p></td>
+<td><p>in 6 months / 6 months ago</p></td>
 </tr>
-<tr class="row-even"><td>$time &gt; 7 days &amp;&amp; &lt; 1 month</td>
-<td>in 3 weeks / 3 weeks ago</td>
+<tr class="row-even"><td><p>7 天 &lt; $time &lt; 1 个月</p></td>
+<td><p>in 3 weeks / 3 weeks ago</p></td>
 </tr>
-<tr class="row-odd"><td>$time &gt; today &amp;&amp; &lt; 7 days</td>
-<td>in 4 days / 4 days ago</td>
+<tr class="row-odd"><td><p>今天 &lt; $time &lt; 7 天</p></td>
+<td><p>in 4 days / 4 days ago</p></td>
 </tr>
-<tr class="row-even"><td>$time &gt; 1 hour &amp;&amp; &lt; 1 day</td>
-<td>in 8 hours / 8 hours ago</td>
+<tr class="row-even"><td><p>1 小时 &lt; $time &lt; 1 天</p></td>
+<td><p>in 8 hours / 8 hours ago</p></td>
 </tr>
-<tr class="row-odd"><td>$time &gt; 1 minute &amp;&amp; &lt; 1 hour</td>
-<td>in 35 minutes / 35 minutes ago</td>
+<tr class="row-odd"><td><p>1 分钟 &lt; $time &lt; 1 小时</p></td>
+<td><p>in 35 minutes / 35 minutes ago</p></td>
 </tr>
-<tr class="row-even"><td>$time &lt; 1 minute</td>
-<td>Now</td>
+<tr class="row-even"><td><p>$time &lt; 1 分钟</p></td>
+<td><p>Now</p></td>
 </tr>
 </tbody>
 </table>
-<p>The exact language used is controlled through the language file, Time.php.</p>
-</div>
-</div>
-</div>
+<p>结果字符串来自语言文件 <strong>system/Language/en/Time.php</strong>。如需覆盖，请创建 <strong>app/Language/{locale}/Time.php</strong>。</p>
+</section>
+</section>
+</section>
+</section>
 
 
+           </div>
           </div>
-          <footer>
-  
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="throttler.html" class="btn btn-neutral float-left" title="限速器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="typography.html" class="btn btn-neutral float-right" title="排版" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; 版权所有 2014-2017 不列颠哥伦比亚理工学院。
-       最后修改：2017-11-09。
-    </p>
+    <p>&#169; 版权所有 2019-2026 CodeIgniter 基金会.
+      <span class="lastupdated">最后更新于 2026-01-08.
+      </span></p>
   </div>
 
-  基于 <a href="http://sphinx-doc.org/">Sphinx</a> 并使用 <a href="https://readthedocs.org">Read the Docs</a> 提供的<a href="https://github.com/snide/sphinx_rtd_theme">风格</a>构建。
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+  
+<jinja2.runtime.BlockReference object at 0x7fc4a323ec10>
+
+<div style="margin-top: 16px;">
+  <p>由 <a href="https://codeigniter.org.cn">CodeIgniter 中国开发者社区</a>翻译并制作</p>
+  <p style="margin-bottom: 0;">
+    <a href="https://github.com/CodeIgniter-Chinese/codeigniter4-user-guide" target="_blank">Github 简体中文翻译</a>
+    ·
+    <a href="https://codeigniter-chinese.github.io/codeigniter4-user-guide/codeigniter_user_guide.zip">离线版压缩包下载</a>
+    ·
+    <a href="https://codeigniter-chinese.github.io/codeigniter4-user-guide/CodeIgniter.pdf">PDF 版下载</a>
+  </p>
+</div>
+
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'4.0.0-dev',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(false);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

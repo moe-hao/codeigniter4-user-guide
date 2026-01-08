@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>控制器过滤器 &mdash; CodeIgniter 4.6.3 中文手册|用户手册|用户指南|中文文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/citheme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/citheme_dark.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script src="../_static/js/citheme.js"></script>
+        <script src="../_static/js/carbon.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="自动路由（改进版）" href="auto_routing_improved.html" />
+    <link rel="prev" title="控制器" href="controllers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/ci-logo-text.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">欢迎使用 CodeIgniter4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/index.html">欢迎使用 CodeIgniter4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/requirements.html">服务器要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/credits.html">致谢</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/psr.html">PSR 兼容性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">许可协议</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/installing_composer.html">Composer 安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/installing_manual.html">手动安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/running.html">运行你的应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/troubleshooting.html">故障排除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/deployment.html">部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelogs/index.html">变更记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/upgrading.html">从前一版本升级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/repositories.html">CodeIgniter 仓库</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">构建你的第一个应用程序</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/static_pages.html">静态页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/news_section.html">新闻部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/create_news_items.html">创建新闻</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/conclusion.html">结束语</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/index.html">CodeIgniter4 概览</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/structure.html">应用程序结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/mvc.html">模型、视图和控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/autoloader.html">自动加载文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/services.html">服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/factories.html">工厂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/http.html">处理 HTTP 请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/security.html">安全指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/goals.html">设计与架构目标</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">常规主题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../general/configuration.html">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/urls.html">CodeIgniter URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/helpers.html">辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/common_functions.html">全局函数和常量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/logging.html">记录信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/errors.html">错误处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/caching.html">网页缓存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/ajax.html">AJAX 请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/modules.html">代码模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/managing_apps.html">管理应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../general/environments.html">处理多个环境</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">控制器和路由</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="routing.html">URI 路由</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">控制器</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">控制器过滤器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_routing_improved.html">自动路由（改进版）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="message.html">HTTP 消息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html">请求类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="incomingrequest.html">IncomingRequest 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content_negotiation.html">内容协商</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methodspoofing.html">HTTP 方法欺骗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restful.html">RESTful 资源处理</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../outgoing/index.html">构建响应</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/views.html">视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_renderer.html">视图渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_layouts.html">视图布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_cells.html">视图单元</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_parser.html">视图解析器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/view_decorators.html">视图装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/table.html">HTML 表格类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/response.html">HTTP 响应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/api_responses.html">API 响应特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/csp.html">内容安全策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/localization.html">本地化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outgoing/alternative_php.html">在视图文件中使用 PHP 替代语法</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">使用数据库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../database/examples.html">快速入门:使用示例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/configuration.html">数据库配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/connecting.html">连接数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/queries.html">运行查询</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/results.html">生成查询结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/helpers.html">查询辅助方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/query_builder.html">查询构建器类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/transactions.html">事务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/metadata.html">获取元数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/call_function.html">自定义函数调用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/events.html">数据库事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database/utilities.html">数据库实用工具</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">数据建模</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/model.html">使用 CodeIgniter 的模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/entities.html">使用实体类</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dbmgmt/index.html">管理数据库</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/forge.html">数据库 Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/migration.html">数据库迁移</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/seeds.html">数据库填充</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dbmgmt/db_commands.html">数据库命令</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/index.html">类库参考</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/caching.html">缓存驱动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cookies.html">Cookie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cors.html">跨域资源共享 (CORS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/curlrequest.html">CURLRequest 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/email.html">Email 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/encryption.html">加密服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/files.html">文件处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/file_collections.html">文件集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/honeypot.html">蜜罐类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/images.html">图像处理类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/pagination.html">分页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/publisher.html">Publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/security.html">安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/sessions.html">Session 库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/throttler.html">限速器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/time.html">时间与日期</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/typography.html">排版</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uploaded_files.html">处理上传的文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/uri.html">使用 URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/user_agent.html">User Agent 类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/validation.html">数据验证</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../helpers/index.html">辅助函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/array_helper.html">数组辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/cookie_helper.html">Cookie 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/date_helper.html">日期辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/filesystem_helper.html">文件系统辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/form_helper.html">表单辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/html_helper.html">HTML 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/inflector_helper.html">Inflector 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/number_helper.html">数字辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/security_helper.html">安全辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/test_helper.html">测试辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/text_helper.html">文本辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/url_helper.html">URL 辅助函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helpers/xml_helper.html">XML 辅助函数</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing/overview.html">入门指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/database.html">数据库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/fabricator.html">生成数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/controllers.html">测试控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/feature.html">HTTP 测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/response.html">测试响应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/cli.html">测试 CLI 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/mocking.html">模拟</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/benchmark.html">基准测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/debugging.html">调试应用程序</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">命令行使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_overview.html">CLI 概览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_controllers.html">通过 CLI 运行控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/spark_commands.html">Spark 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_commands.html">创建 Spark 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_generators.html">CLI 生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_library.html">CLI 库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli/cli_request.html">CLIRequest 类</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">扩展 CodeIgniter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extending/core_classes.html">创建核心系统类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/common.html">替换通用函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/events.html">事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/basecontroller.html">扩展控制器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/authentication.html">身份验证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/composer_packages.html">创建 Composer 包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/contributing.html">为 CodeIgniter 做贡献</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libraries/official_packages.html">官方包</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CodeIgniter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">控制器和路由</a></li>
+      <li class="breadcrumb-item active">控制器过滤器</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>控制器过滤器<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<nav class="contents local" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id3" id="id18">创建过滤器</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id4" id="id19">前置过滤器</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id20">替换请求对象</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id21">终止后续过滤器执行</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id22">返回响应对象</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#after-filters" id="id23">后置过滤器</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id9" id="id24">配置过滤器</a></p>
+<ul>
+<li><p><a class="reference internal" href="#app-config-filters-php" id="id25">app/Config/Filters.php</a></p>
+<ul>
+<li><p><a class="reference internal" href="#aliases" id="id26">$aliases</a></p></li>
+<li><p><a class="reference internal" href="#required" id="id27">$required</a></p></li>
+<li><p><a class="reference internal" href="#globals" id="id28">$globals</a></p></li>
+<li><p><a class="reference internal" href="#methods" id="id29">$methods</a></p></li>
+<li><p><a class="reference internal" href="#filters" id="id30">$filters</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#filter-execution-order" id="id31">过滤器执行顺序</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id12" id="id32">验证过滤器配置</a></p>
+<ul>
+<li><p><a class="reference internal" href="#filter-check" id="id33">filter:check</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#provided-filters" id="id34">内置过滤器</a></p>
+<ul>
+<li><p><a class="reference internal" href="#forcehttps" id="id35">ForceHTTPS</a></p></li>
+<li><p><a class="reference internal" href="#performancemetrics" id="id36">PerformanceMetrics</a></p></li>
+<li><p><a class="reference internal" href="#invalidchars" id="id37">InvalidChars</a></p></li>
+<li><p><a class="reference internal" href="#secureheaders" id="id38">SecureHeaders</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>控制器过滤器允许你在控制器执行前后执行特定操作。与 <a class="reference internal" href="../extending/events.html"><span class="doc">事件</span></a> 不同，你可以选择将过滤器应用于特定的 URI 或路由。前置过滤器可以修改请求（Request），而后置过滤器可以操作甚至修改响应（Response），这为开发者提供了极大的灵活性和控制力。</p>
+<p>以下是使用过滤器实现的常见场景示例：</p>
+<ul class="simple">
+<li><p>对传入请求实施 CSRF 保护</p></li>
+<li><p>根据用户角色限制网站区域访问</p></li>
+<li><p>对特定端点进行速率限制</p></li>
+<li><p>显示「网站维护中」页面</p></li>
+<li><p>执行自动内容协商</p></li>
+<li><p>以及其他更多应用场景…</p></li>
+</ul>
+<section id="id3">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">创建过滤器</a><a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<p>过滤器是实现了 <code class="docutils literal notranslate"><span class="pre">CodeIgniter\Filters\FilterInterface</span></code> 接口的简单类。它们包含两个方法：<code class="docutils literal notranslate"><span class="pre">before()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">after()</span></code>，分别用于在控制器执行前后运行代码。你的类必须包含这两个方法，但如果不需要具体实现，可以保持方法体为空。一个基础的过滤器类结构如下：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Filters</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Filters\FilterInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\HTTP\RequestInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\HTTP\ResponseInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyFilter</span> <span class="k">implements</span> <span class="nx">FilterInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">before</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Do something here</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">after</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Do something here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="id4">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">前置过滤器</a><a class="headerlink" href="#id4" title="此标题的永久链接"></a></h3>
+<section id="id5">
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">替换请求对象</a><a class="headerlink" href="#id5" title="此标题的永久链接"></a></h4>
+<p>在任何前置过滤器中，你可以返回修改后的 <code class="docutils literal notranslate"><span class="pre">$request</span></code> 对象，该对象将替换当前请求，确保控制器执行时使用的是修改后的请求实例。</p>
+</section>
+<section id="id6">
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">终止后续过滤器执行</a><a class="headerlink" href="#id6" title="此标题的永久链接"></a></h4>
+<p>当存在多个过滤器时，你可能需要在某个过滤器之后终止后续过滤器的执行。只需返回 <strong>任意非空值</strong> 即可实现。若前置过滤器返回空值，控制器操作及后续过滤器仍会继续执行。</p>
+<p>需要注意的是，返回 <code class="docutils literal notranslate"><span class="pre">Request</span></code> 实例属于例外情况。在前置过滤器中返回该实例不会终止执行流程，仅会替换当前的 <code class="docutils literal notranslate"><span class="pre">$request</span></code> 对象。</p>
+</section>
+<section id="id7">
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">返回响应对象</a><a class="headerlink" href="#id7" title="此标题的永久链接"></a></h4>
+<p>由于前置过滤器在控制器执行前运行，有时你可能希望阻止控制器的后续操作。这通常用于执行重定向，如下例所示：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Filters</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Filters\FilterInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\HTTP\RequestInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">CodeIgniter\HTTP\ResponseInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyFilter</span> <span class="k">implements</span> <span class="nx">FilterInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">before</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$auth</span> <span class="o">=</span> <span class="nx">service</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nv">$auth</span><span class="o">-&gt;</span><span class="na">isLoggedIn</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">to</span><span class="p">(</span><span class="nx">site_url</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果返回 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 实例，该响应将直接发送至客户端并终止脚本执行。这在实现 API 速率限制时非常有用，具体示例可参考 <a class="reference internal" href="../libraries/throttler.html"><span class="doc">Throttler</span></a> 库文档。</p>
+</section>
+</section>
+<section id="after-filters">
+<span id="id8"></span><h3><a class="toc-backref" href="#id23" role="doc-backlink">后置过滤器</a><a class="headerlink" href="#after-filters" title="此标题的永久链接"></a></h3>
+<p>后置过滤器与前置过滤器类似，但只能返回 <code class="docutils literal notranslate"><span class="pre">$response</span></code> 对象且无法终止脚本执行。这允许你修改最终输出内容或对其进行后续处理，例如确保安全头正确设置、缓存最终输出或实施敏感词过滤等。</p>
+</section>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">配置过滤器</a><a class="headerlink" href="#id9" title="此标题的永久链接"></a></h2>
+<p>有两种方式配置过滤器的执行时机：一种在 <strong>app/Config/Filters.php</strong> 中配置，另一种在 <strong>app/Config/Routes.php</strong> 中配置。若需为定义的路由指定过滤器，请使用 <strong>app/Config/Routes.php</strong> 并参考 <a class="reference internal" href="routing.html#applying-filters"><span class="std std-ref">URI 路由</span></a> 章节。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>最安全的过滤器应用方式是 <a class="reference internal" href="routing.html#use-defined-routes-only"><span class="std std-ref">禁用自动路由</span></a> 并 <a class="reference internal" href="routing.html#applying-filters"><span class="std std-ref">为路由设置过滤器</span></a>。</p>
+</div>
+<section id="app-config-filters-php">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">app/Config/Filters.php</a><a class="headerlink" href="#app-config-filters-php" title="此标题的永久链接"></a></h3>
+<p><strong>app/Config/Filters.php</strong> 文件包含四个属性，用于精确控制过滤器的执行时机。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>建议在过滤器设置的 URI 末尾始终添加 <code class="docutils literal notranslate"><span class="pre">*</span></code> 通配符。因为控制器方法可能通过你未预料到的其他 URL 访问。例如，当启用 <a class="reference internal" href="routing.html#auto-routing-legacy"><span class="std std-ref">传统自动路由</span></a> 时，若存在 <code class="docutils literal notranslate"><span class="pre">Blog::index()</span></code> 方法，可通过 <code class="docutils literal notranslate"><span class="pre">blog</span></code>、<code class="docutils literal notranslate"><span class="pre">blog/index</span></code> 和 <code class="docutils literal notranslate"><span class="pre">blog/index/1</span></code> 等路径访问。</p>
+</div>
+<section id="aliases">
+<span id="filters-aliases"></span><h4><a class="toc-backref" href="#id26" role="doc-backlink">$aliases</a><a class="headerlink" href="#aliases" title="此标题的永久链接"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">$aliases</span></code> 数组用于将一个简短的别名与一个或多个完整的过滤器类名关联：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$aliases</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;csrf&#39;</span> <span class="o">=&gt;</span> <span class="nx">\CodeIgniter\Filters\CSRF</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>别名是强制性的，若尝试直接使用完整类名，系统将抛出错误。</p>
+<p>这种定义方式便于后续更换过滤器类（例如切换认证系统时），只需修改别名对应的类即可完成迁移。</p>
+<p>你还可以将多个过滤器组合到一个别名下，简化复杂过滤器集的配置：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$aliases</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;api-prep&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="nx">\App\Filters\Negotiate</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+            <span class="nx">\App\Filters\ApiAuth</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>根据需求定义任意数量的别名。</p>
+</section>
+<section id="required">
+<span id="filters-required"></span><h4><a class="toc-backref" href="#id27" role="doc-backlink">$required</a><a class="headerlink" href="#required" title="此标题的永久链接"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">在 4.5.0 版本加入.</span></p>
+</div>
+<p>第二部分用于定义 <strong>必选过滤器</strong>。这些特殊过滤器会应用于框架处理的每个请求，且在其他类型过滤器之前和之后执行。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>必选过滤器始终执行。但如果路由不存在，仅会执行前置过滤器。</p>
+</div>
+<p>需谨慎设置此处过滤器的数量，过多会影响请求处理性能。默认提供的必选过滤器支撑框架核心功能，移除可能导致相关功能失效。详见 <a class="reference internal" href="#provided-filters"><span class="std std-ref">内置过滤器</span></a>。</p>
+<p>通过将别名添加至 <code class="docutils literal notranslate"><span class="pre">before</span></code> 或 <code class="docutils literal notranslate"><span class="pre">after</span></code> 数组来指定必选过滤器：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$required</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;before&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;forcehttps&#39;</span><span class="p">,</span> <span class="c1">// Force Global Secure Requests</span>
+            <span class="s1">&#39;pagecache&#39;</span><span class="p">,</span>  <span class="c1">// Web Page Caching</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;after&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;pagecache&#39;</span><span class="p">,</span>   <span class="c1">// Web Page Caching</span>
+            <span class="s1">&#39;performance&#39;</span><span class="p">,</span> <span class="c1">// Performance Metrics</span>
+            <span class="s1">&#39;toolbar&#39;</span><span class="p">,</span>     <span class="c1">// Debug Toolbar</span>
+        <span class="p">],</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="globals">
+<span id="filters-globals"></span><h4><a class="toc-backref" href="#id28" role="doc-backlink">$globals</a><a class="headerlink" href="#globals" title="此标题的永久链接"></a></h4>
+<p>第三部分用于定义应用于所有有效请求的全局过滤器。需注意过滤器数量对性能的影响。</p>
+<p>通过将别名添加至 <code class="docutils literal notranslate"><span class="pre">before</span></code> 或 <code class="docutils literal notranslate"><span class="pre">after</span></code> 数组来指定全局过滤器：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$globals</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;before&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;csrf&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;after&#39;</span> <span class="o">=&gt;</span> <span class="p">[],</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="uri">
+<h5>排除特定 URI<a class="headerlink" href="#uri" title="此标题的永久链接"></a></h5>
+<p>有时需要对绝大多数请求应用过滤器，但排除少数例外。例如在 CSRF 保护中排除第三方网站可访问的特定 URI。</p>
+<p>在别名旁添加包含 <code class="docutils literal notranslate"><span class="pre">except</span></code> 键和 URI 路径（相对于 BaseURL）的数组实现：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$globals</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;before&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;csrf&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;except&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;api/*&#39;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;after&#39;</span> <span class="o">=&gt;</span> <span class="p">[],</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>在 v4.4.7 之前，由于漏洞，过滤器处理的 URI 路径未进行 URL 解码。即路由中的 URI 路径与过滤器配置的路径可能不一致。详见 <a class="reference internal" href="../installation/upgrade_447.html#upgrade-447-filter-paths"><span class="std std-ref">控制器过滤器中的路径</span></a>。</p>
+</div>
+<p>在过滤器设置中，可使用正则表达式或通配符（<code class="docutils literal notranslate"><span class="pre">*</span></code>）匹配 URI 路径。上例中，所有以 <code class="docutils literal notranslate"><span class="pre">api/</span></code> 开头的路径将豁免 CSRF 保护。</p>
+<p>如需指定多个路径，可使用路径模式数组：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$globals</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;before&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;csrf&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;except&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo/*&#39;</span><span class="p">,</span> <span class="s1">&#39;bar/*&#39;</span><span class="p">]],</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;after&#39;</span> <span class="o">=&gt;</span> <span class="p">[],</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="methods">
+<h4><a class="toc-backref" href="#id29" role="doc-backlink">$methods</a><a class="headerlink" href="#methods" title="此标题的永久链接"></a></h4>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>若使用 <code class="docutils literal notranslate"><span class="pre">$methods</span></code> 过滤器，应 <a class="reference internal" href="routing.html#use-defined-routes-only"><span class="std std-ref">禁用传统自动路由</span></a>，因为 <a class="reference internal" href="routing.html#auto-routing-legacy"><span class="std std-ref">传统自动路由</span></a> 允许通过任意 HTTP 方法访问控制器，可能导致过滤器被绕过。</p>
+</div>
+<p>可为特定 HTTP 方法（如 POST、GET、PUT 等）的所有请求应用过滤器。其值为要运行的过滤器数组：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$methods</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;POST&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;invalidchars&#39;</span><span class="p">,</span> <span class="s1">&#39;csrf&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;GET&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;csrf&#39;</span><span class="p">],</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>与 <code class="docutils literal notranslate"><span class="pre">$globals</span></code> 或 <code class="docutils literal notranslate"><span class="pre">$filters</span></code> 不同，这些过滤器仅作为前置过滤器运行。</p>
+</div>
+<p>除标准 HTTP 方法外，还支持特殊值 <code class="docutils literal notranslate"><span class="pre">CLI</span></code>，该值应用于所有命令行请求。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>v4.5.0 之前版本需使用 <strong>小写</strong> 指定 HTTP 方法名称。</p>
+</div>
+</section>
+<section id="filters">
+<h4><a class="toc-backref" href="#id30" role="doc-backlink">$filters</a><a class="headerlink" href="#filters" title="此标题的永久链接"></a></h4>
+<p>该属性是过滤器别名数组。每个别名可指定 <code class="docutils literal notranslate"><span class="pre">before</span></code> 和 <code class="docutils literal notranslate"><span class="pre">after</span></code> 数组，包含过滤器应应用的 URI 路径模式（相对于 BaseURL）：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$filters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;before&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;admin/*&#39;</span><span class="p">],</span> <span class="s1">&#39;after&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;users/*&#39;</span><span class="p">]],</span>
+        <span class="s1">&#39;bar&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;before&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;api/*&#39;</span><span class="p">,</span> <span class="s1">&#39;admin/*&#39;</span><span class="p">]],</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>在 v4.4.7 之前，由于漏洞，过滤器处理的 URI 路径未进行 URL 解码。详见 <a class="reference internal" href="../installation/upgrade_447.html#upgrade-447-filter-paths"><span class="std std-ref">控制器过滤器中的路径</span></a>。</p>
+</div>
+<section id="filters-filters-filter-arguments">
+<span id="id10"></span><h5>过滤器参数<a class="headerlink" href="#filters-filters-filter-arguments" title="此标题的永久链接"></a></h5>
+<div class="versionadded">
+<p><span class="versionmodified added">在 4.4.0 版本加入.</span></p>
+</div>
+<p>配置 <code class="docutils literal notranslate"><span class="pre">$filters</span></code> 时，可向过滤器传递额外参数：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+
+    <span class="k">public</span> <span class="nv">$filters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;group:admin,superadmin&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;before&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;admin/*&#39;</span><span class="p">]],</span>
+        <span class="s1">&#39;permission:users.manage&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;before&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;admin/users/*&#39;</span><span class="p">]],</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>本例中，当 URI 匹配 <code class="docutils literal notranslate"><span class="pre">admin/*</span></code> 时，数组 <code class="docutils literal notranslate"><span class="pre">['admin',</span> <span class="pre">'superadmin']</span></code> 将作为 <code class="docutils literal notranslate"><span class="pre">$arguments</span></code> 传递给 <code class="docutils literal notranslate"><span class="pre">group</span></code> 过滤器的 <code class="docutils literal notranslate"><span class="pre">before()</span></code> 方法；当匹配 <code class="docutils literal notranslate"><span class="pre">admin/users/*</span></code> 时，数组 <code class="docutils literal notranslate"><span class="pre">['users.manage']</span></code> 将传递给 <code class="docutils literal notranslate"><span class="pre">permission</span></code> 过滤器的 <code class="docutils literal notranslate"><span class="pre">before()</span></code> 方法。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>v4.6.0 之前版本，同一过滤器无法使用不同参数多次运行。</p>
+</div>
+</section>
+</section>
+</section>
+<section id="filter-execution-order">
+<span id="id11"></span><h3><a class="toc-backref" href="#id31" role="doc-backlink">过滤器执行顺序</a><a class="headerlink" href="#filter-execution-order" title="此标题的永久链接"></a></h3>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>自 v4.5.0 起，过滤器执行顺序已变更。如需保持旧版顺序，请将 <code class="docutils literal notranslate"><span class="pre">Config\Feature::$oldFilterOrder</span></code> 设为 <code class="docutils literal notranslate"><span class="pre">true</span></code>。</p>
+</div>
+<p>过滤器按以下顺序执行：</p>
+<ul class="simple">
+<li><p><strong>前置过滤器</strong>：必选 → 全局 → 方法 → 过滤器 → 路由</p></li>
+<li><p><strong>后置过滤器</strong>：路由 → 过滤器 → 全局 → 必选</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><em>必选</em> 过滤器自 v4.5.0 起可用。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>v4.5.0 之前版本，路由过滤器（在 <strong>app/Config/Routes.php</strong> 中定义）优先于 <strong>app/Config/Filters.php</strong> 中的过滤器执行，且后置过滤器的执行顺序未反转。详见 <a class="reference internal" href="../installation/upgrade_450.html#upgrade-450-filter-execution-order"><span class="std std-ref">升级指南</span></a>。</p>
+</div>
+</section>
+</section>
+<section id="id12">
+<h2><a class="toc-backref" href="#id32" role="doc-backlink">验证过滤器配置</a><a class="headerlink" href="#id12" title="此标题的永久链接"></a></h2>
+<p>CodeIgniter 提供以下 <a class="reference internal" href="../cli/spark_commands.html"><span class="doc">命令</span></a> 用于检查路由的过滤器配置。</p>
+<section id="filter-check">
+<span id="spark-filter-check"></span><h3><a class="toc-backref" href="#id33" role="doc-backlink">filter:check</a><a class="headerlink" href="#filter-check" title="此标题的永久链接"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">在 4.3.0 版本加入.</span></p>
+</div>
+<p>示例：检查 <code class="docutils literal notranslate"><span class="pre">/</span></code> 路由的 GET 方法过滤器配置：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">php spark filter:check get /</span>
+</pre></div>
+</div>
+<p>输出结果如下：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+--------+-------+----------------------+-------------------------------+
+| Method | Route | Before Filters       | After Filters                 |
++--------+-------+----------------------+-------------------------------+
+| GET    | /     | forcehttps pagecache | pagecache performance toolbar |
++--------+-------+----------------------+-------------------------------+
+
+Before Filter Classes:
+CodeIgniter\Filters\ForceHTTPS → CodeIgniter\Filters\PageCache
+After Filter Classes:
+CodeIgniter\Filters\PageCache → CodeIgniter\Filters\PerformanceMetrics → CodeIgniter\Filters\DebugToolbar
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>自 v4.6.0 起，输出表格中会显示过滤器参数，并展示实际使用的过滤器类名。</p>
+</div>
+<p>也可通过 <code class="docutils literal notranslate"><span class="pre">spark</span> <span class="pre">routes</span></code> 命令查看路由和过滤器，但使用正则表达式定义路由时可能显示不准确。详见 <a class="reference internal" href="routing.html#routing-spark-routes"><span class="std std-ref">URI 路由</span></a>。</p>
+</section>
+</section>
+<section id="provided-filters">
+<span id="id13"></span><h2><a class="toc-backref" href="#id34" role="doc-backlink">内置过滤器</a><a class="headerlink" href="#provided-filters" title="此标题的永久链接"></a></h2>
+<p>CodeIgniter4 内置以下过滤器：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cors</span></code> =&gt; <a class="reference internal" href="../libraries/cors.html"><span class="doc">跨域资源共享 (CORS)</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">csrf</span></code> =&gt; <a class="reference internal" href="../libraries/security.html#cross-site-request-forgery"><span class="std std-ref">CSRF</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">toolbar</span></code> =&gt; <a class="reference internal" href="../testing/debugging.html#the-debug-toolbar"><span class="std std-ref">DebugToolbar</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">honeypot</span></code> =&gt; <a class="reference internal" href="../libraries/honeypot.html"><span class="doc">Honeypot</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">invalidchars</span></code> =&gt; <a class="reference internal" href="#invalidchars"><span class="std std-ref">InvalidChars</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secureheaders</span></code> =&gt; <a class="reference internal" href="#secureheaders"><span class="std std-ref">SecureHeaders</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forcehttps</span></code> =&gt; <a class="reference internal" href="#forcehttps"><span class="std std-ref">ForceHTTPS</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pagecache</span></code> =&gt; <a class="reference internal" href="../general/caching.html"><span class="doc">页面缓存</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">performance</span></code> =&gt; <a class="reference internal" href="#performancemetrics"><span class="std std-ref">PerformanceMetrics</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>过滤器按配置文件中的顺序执行。但若启用，<code class="docutils literal notranslate"><span class="pre">DebugToolbar</span></code> 始终最后执行，以便捕获其他过滤器的所有操作。</p>
+</div>
+<section id="forcehttps">
+<span id="id14"></span><h3><a class="toc-backref" href="#id35" role="doc-backlink">ForceHTTPS</a><a class="headerlink" href="#forcehttps" title="此标题的永久链接"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">在 4.5.0 版本加入.</span></p>
+</div>
+<p>该过滤器提供「强制全局安全请求」功能。若设置 <code class="docutils literal notranslate"><span class="pre">Config\App:$forceGlobalSecureRequests</span></code> 为 true，所有请求必须通过 HTTPS 连接。若请求不安全，用户将被重定向至安全页面，并设置 HSTS 头。</p>
+</section>
+<section id="performancemetrics">
+<span id="id15"></span><h3><a class="toc-backref" href="#id36" role="doc-backlink">PerformanceMetrics</a><a class="headerlink" href="#performancemetrics" title="此标题的永久链接"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">在 4.5.0 版本加入.</span></p>
+</div>
+<p>该过滤器提供性能指标伪变量。若需在视图中显示从框架启动到输出生成的总耗时，使用:</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">elapsed_time</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>显示内存使用量则使用:</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">memory_usage</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>若不需要此功能，从 <code class="docutils literal notranslate"><span class="pre">$required['after']</span></code> 中移除 <code class="docutils literal notranslate"><span class="pre">'performance'</span></code>。</p>
+</section>
+<section id="invalidchars">
+<span id="id16"></span><h3><a class="toc-backref" href="#id37" role="doc-backlink">InvalidChars</a><a class="headerlink" href="#invalidchars" title="此标题的永久链接"></a></h3>
+<p>该过滤器禁止用户输入数据（<code class="docutils literal notranslate"><span class="pre">$_GET</span></code>、<code class="docutils literal notranslate"><span class="pre">$_POST</span></code>、<code class="docutils literal notranslate"><span class="pre">$_COOKIE</span></code>、<code class="docutils literal notranslate"><span class="pre">php://input</span></code>）包含以下字符：</p>
+<ul class="simple">
+<li><p>无效 UTF-8 字符</p></li>
+<li><p>除换行符和制表符外的控制字符</p></li>
+</ul>
+</section>
+<section id="secureheaders">
+<span id="id17"></span><h3><a class="toc-backref" href="#id38" role="doc-backlink">SecureHeaders</a><a class="headerlink" href="#secureheaders" title="此标题的永久链接"></a></h3>
+<p>该过滤器添加增强应用安全性的 HTTP 响应头。如需自定义头信息，可继承 <code class="docutils literal notranslate"><span class="pre">CodeIgniter\Filters\SecureHeaders</span></code> 并覆盖 <code class="docutils literal notranslate"><span class="pre">$headers</span></code> 属性，然后在 <strong>app/Config/Filters.php</strong> 中修改 <code class="docutils literal notranslate"><span class="pre">$aliases</span></code>：</p>
+<div class="highlight-html+php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Config</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">CodeIgniter\Config\BaseConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Filters</span> <span class="k">extends</span> <span class="nx">BaseConfig</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$aliases</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+        <span class="s1">&#39;secureheaders&#39;</span> <span class="o">=&gt;</span> <span class="nx">\App\Filters\SecureHeaders</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>有关安全头的详细信息，请参考 <a class="reference external" href="https://owasp.org/www-project-secure-headers/">OWASP 安全头项目</a>。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="controllers.html" class="btn btn-neutral float-left" title="控制器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="auto_routing_improved.html" class="btn btn-neutral float-right" title="自动路由（改进版）" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2026 CodeIgniter 基金会.
+      <span class="lastupdated">最后更新于 2026-01-08.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+  
+<jinja2.runtime.BlockReference object at 0x7fc4a7e74590>
+
+<div style="margin-top: 16px;">
+  <p>由 <a href="https://codeigniter.org.cn">CodeIgniter 中国开发者社区</a>翻译并制作</p>
+  <p style="margin-bottom: 0;">
+    <a href="https://github.com/CodeIgniter-Chinese/codeigniter4-user-guide" target="_blank">Github 简体中文翻译</a>
+    ·
+    <a href="https://codeigniter-chinese.github.io/codeigniter4-user-guide/codeigniter_user_guide.zip">离线版压缩包下载</a>
+    ·
+    <a href="https://codeigniter-chinese.github.io/codeigniter4-user-guide/CodeIgniter.pdf">PDF 版下载</a>
+  </p>
+</div>
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
